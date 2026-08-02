@@ -1,0 +1,47 @@
+/* Custom Styles for Etiq & Bolsas Impresas */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.glass-card {
+    background: rgba(30, 41, 59, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #ffb77d 0%, #d97707 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Active Nav Link */
+.nav-link.active-link {
+    color: #ffb77d !important;
+    border-bottom-color: #d97707 !important;
+}
+
+/* Filter Pills Active State */
+.filter-pill.active-pill {
+    background-color: #ffb77d !important;
+    color: #4d2600 !important;
+}
+
+/* Page View Animation */
+.page-view {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
