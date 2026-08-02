@@ -1,5 +1,9 @@
 # 🛍️ etiqybolsasimpresas - Catálogo & Packaging Personalizado
 
+> 🌐 **Sitio Web Oficial en Vivo**: [https://etiqybolsasimpresas.vercel.app](https://etiqybolsasimpresas.vercel.app/)
+
+[![Sitio Web Oficial](https://img.shields.io/badge/Sitio_Web-etiqybolsasimpresas.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://etiqybolsasimpresas.vercel.app/)
+
 [![Vite](https://img.shields.io/badge/Vite-6.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
