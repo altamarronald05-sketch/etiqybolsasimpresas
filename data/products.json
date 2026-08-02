@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "name": "Bolsa Kraft Boutique Impresa",
+    "slug": "bolsa-kraft-boutique",
+    "category": "Bolsas Kraft",
+    "price": 1200,
+    "salePrice": 950,
+    "isOffer": true,
+    "moq": "Desde 100 uds",
+    "img": "assets/bolsas_kraft.png",
+    "sizes": [
+      "P (15x20 cm)",
+      "M (22x30 cm)",
+      "G (30x40 cm)"
+    ],
+    "volumePricing": {
+      "100": 1200,
+      "500": 950,
+      "1000": 800
+    },
+    "description": "Bolsa de papel kraft ecológico de alta densidad (120g) con asas retorcidas e impresión de tu logotipo en 1 o 2 tintas. Perfecta para tiendas de ropa, calzado y boutiques.",
+    "specs": {
+      "Material": "Papel Kraft Reciclable 120g",
+      "Impresión": "Serigrafía / Flexografía de Alta Nitidez",
+      "Acabado": "Mate Natural",
+      "Asa": "Cordón de Papel Retorcido Reforzado"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Etiquetas en Rollo Metalizadas Foil",
+    "slug": "etiquetas-rollo-foil",
+    "category": "Etiquetas",
+    "price": 450,
+    "salePrice": 350,
+    "isOffer": true,
+    "moq": "Desde 100 uds",
+    "img": "assets/etiquetas_rollo.png",
+    "sizes": [
+      "3x3 cm",
+      "5x5 cm",
+      "7x7 cm"
+    ],
+    "volumePricing": {
+      "100": 450,
+      "500": 350,
+      "1000": 280
+    },
+    "description": "Etiquetas adhesivas en rollo con estampado en pan de oro/plata brillante. Alta adherencia para envases de cristal, botellas, cosméticos y empaques de lujo.",
+    "specs": {
+      "Material": "Vinilo Adhesivo Premium",
+      "Impresión": "Foil Metalizado Dorado / Plateado",
+      "Acabado": "Brillante o Mate",
+      "Presentación": "Rollo continuo de fácil aplicación"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Bolsa Plástica Polietileno Boutique",
+    "slug": "bolsa-plastica-polietileno",
+    "category": "Bolsas Plásticas",
+    "price": 850,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 500 uds",
+    "img": "assets/bolsas_plasticas.png",
+    "sizes": [
+      "P (20x30 cm)",
+      "M (30x40 cm)",
+      "G (40x50 cm)"
+    ],
+    "volumePricing": {
+      "500": 850,
+      "1000": 680,
+      "3000": 550
+    },
+    "description": "Bolsas de plástico troqueladas tipo riñón, elaboradas en polietileno de alta densidad duradero con acabado satinado suave.",
+    "specs": {
+      "Material": "Polietileno de Alta Densidad",
+      "Impresión": "Pigmento a 1 o 2 caras",
+      "Troquel": "Asa tipo Riñón Reforzada",
+      "Resistencia": "Soporta hasta 8 kg"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Caja Corrugada para Envíos E-Commerce",
+    "slug": "caja-corrugada-ecommerce",
+    "category": "Cajas",
+    "price": 2400,
+    "salePrice": 1990,
+    "isOffer": true,
+    "moq": "Desde 100 uds",
+    "img": "assets/cajas_impresas.png",
+    "sizes": [
+      "P (15x15x8 cm)",
+      "M (25x20x10 cm)",
+      "G (35x25x12 cm)"
+    ],
+    "volumePricing": {
+      "100": 2400,
+      "500": 1990,
+      "1000": 1650
+    },
+    "description": "Cajas de cartón microcorrugado impresas a medida para despachos de e-commerce. Protegen tus productos durante el transporte proyectando una imagen profesional.",
+    "specs": {
+      "Material": "Cartón Microcorrugado Flauta E",
+      "Impresión": "Flexografía exterior e interior",
+      "Cierre": "Auto-armable sin cinta adhesiva requerida"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Bolsa Kraft de Asa Plana Económica",
+    "slug": "bolsa-kraft-asa-plana",
+    "category": "Bolsas Kraft",
+    "price": 980,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 100 uds",
+    "img": "assets/bolsas_kraft.png",
+    "sizes": [
+      "P (18x24 cm)",
+      "M (26x34 cm)",
+      "G (32x42 cm)"
+    ],
+    "volumePricing": {
+      "100": 980,
+      "500": 780,
+      "1000": 620
+    },
+    "description": "Opción económica y funcional para domicilios, panaderías, restaurantes y comercios que requieren rapidez y excelente presentación.",
+    "specs": {
+      "Material": "Papel Kraft Natural 90g",
+      "Asa": "Papel Plano Pegado Interior",
+      "Impresión": "Tintas Ecológicas a base de agua"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Etiqueta Transparente Vinilo Mate Impermeable",
+    "slug": "etiqueta-transparente-vinilo",
+    "category": "Etiquetas",
+    "price": 380,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 200 uds",
+    "img": "assets/etiquetas_rollo.png",
+    "sizes": [
+      "4x4 cm",
+      "6x6 cm",
+      "8x8 cm"
+    ],
+    "volumePricing": {
+      "200": 380,
+      "500": 290,
+      "1000": 220
+    },
+    "description": "Etiquetas totalmente transparentes ideales para frascos de vidrio, cosmética y productos refrigerados. Resistentes al agua y aceite.",
+    "specs": {
+      "Material": "BOPP Transparente ultra claro",
+      "Impresión": "Tinta Blanca + CMYK",
+      "Resistencia": "Resistente a agua, alcohol y congelación"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Bolsa Satinada de Lujo para Ropa y Calzado",
+    "slug": "bolsa-satinada-lujo",
+    "category": "Bolsas Plásticas",
+    "price": 1450,
+    "salePrice": 1250,
+    "isOffer": true,
+    "moq": "Desde 300 uds",
+    "img": "assets/bolsas_plasticas.png",
+    "sizes": [
+      "M (30x40 cm)",
+      "G (40x50 cm)"
+    ],
+    "volumePricing": {
+      "300": 1450,
+      "500": 1250,
+      "1000": 990
+    },
+    "description": "Bolsas de plástico grueso con acabado mate táctil satinado y asas de cordón suave de tela. Eleva la experiencia de compra de tus clientes.",
+    "specs": {
+      "Material": "Polietileno de Baja Densidad 70 micras",
+      "Asas": "Cordón de algodón/Poliéster",
+      "Acabado": "Tacto Suave Satinado"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Cinta de Embalaje Impresa con Logotipo",
+    "slug": "cinta-embalaje-logo",
+    "category": "Cajas",
+    "price": 8500,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 36 rollos",
+    "img": "assets/cajas_impresas.png",
+    "sizes": [
+      "48 mm x 100 m"
+    ],
+    "volumePricing": {
+      "36": 8500,
+      "72": 7200,
+      "144": 5900
+    },
+    "description": "Cinta adhesiva de polipropileno impresa a 1 o 2 tintas. Sella tus cajas garantizando la inviolabilidad del paquete y reforzando tu marca.",
+    "specs": {
+      "Material": "Polipropileno Grado Industrial 45 micras",
+      "Adhesivo": "Acrílico de Alta Adherencia",
+      "Medida": "48 mm de ancho x 100 m de largo"
+    }
+  }
+]

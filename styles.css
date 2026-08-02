@@ -30,6 +30,13 @@
     color: #4d2600 !important;
 }
 
+/* Active Offer Filter Btn */
+.active-offer-btn {
+    background-color: rgba(217, 119, 7, 0.2) !important;
+    border-color: #d97707 !important;
+    color: #ffb77d !important;
+}
+
 /* Page View Animation */
 .page-view {
     animation: fadeIn 0.3s ease-in-out;
@@ -43,5 +50,24 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Print PDF Stylesheet */
+@media print {
+    header, footer, #quoteDrawer, #productModal, .fixed, button {
+        display: none !important;
+    }
+    body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+    }
+    #view-catalogo {
+        display: block !important;
+    }
+    #productGrid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
     }
 }
