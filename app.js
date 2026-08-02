@@ -1,3 +1,27 @@
+
+// Logo Upload State
+let uploadedLogoFile = null;
+
+function handleLogoUpload(input) {
+    if (input.files && input.files[0]) {
+        const file = input.files[0];
+        uploadedLogoFile = file;
+        
+        document.getElementById('uploadedFileName').textContent = file.name;
+        document.getElementById('uploadedFileSize').textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+        
+        document.getElementById('dropzoneEmptyState').classList.add('hidden');
+        document.getElementById('dropzoneSelectedState').classList.remove('hidden');
+    }
+}
+
+function removeUploadedLogo() {
+    uploadedLogoFile = null;
+    document.getElementById('logoFileInput').value = '';
+    document.getElementById('dropzoneEmptyState').classList.remove('hidden');
+    document.getElementById('dropzoneSelectedState').classList.add('hidden');
+}
+
 // Active Application State
 let products = [];
 let currentCategory = 'Todas';

@@ -71,6 +71,29 @@
     <meta property="og:url" content="https://etiqybolsasimpresas.vercel.app/"/>
     <meta property="og:title" content="etiqybolsasimpresas | Empaques & Etiquetas Personalizadas"/>
     <meta property="og:description" content="Catálogo interactivo de bolsas kraft, plásticas, cajas e impresiones personalizadas con cotización a WhatsApp."/>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MEASUREMENT_ID');
+    </script>
+
+    <!-- Meta Pixel Code (Instagram / Facebook Ads) -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'PIXEL_ID');
+      fbq('track', 'PageView');
+    </script>
 </head>
 <body class="font-body bg-surface text-on-surface selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col antialiased overflow-x-hidden">
 
@@ -496,9 +519,35 @@
                     </div>
                 </div>
 
-                <!-- Custom Note or Logo details -->
+                <!-- Custom Logo Upload & Specifications -->
                 <div class="space-y-3">
-                    <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider">3. Detalles del Logotipo o Especificación (Opcional)</label>
+                    <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider">3. Subir Logotipo de tu Marca (PDF, AI, PNG, SVG)</label>
+                    <div id="dropzone" onclick="document.getElementById('logoFileInput').click()" class="border-2 border-dashed border-outline-variant/40 hover:border-secondary rounded-2xl p-4 text-center cursor-pointer transition-all bg-surface-container-high/40 group">
+                        <input type="file" id="logoFileInput" accept=".ai,.pdf,.png,.jpg,.jpeg,.svg,.eps" class="hidden" onchange="handleLogoUpload(this)"/>
+                        
+                        <div id="dropzoneEmptyState" class="space-y-1">
+                            <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary transition-colors">cloud_upload</span>
+                            <p class="text-xs text-on-surface font-semibold">Haz clic aquí para seleccionar tu logotipo</p>
+                            <p class="text-[10px] text-on-surface-variant">Archivos permitidos: .AI, .PDF, .PNG, .JPG, .SVG</p>
+                        </div>
+
+                        <div id="dropzoneSelectedState" class="hidden flex items-center justify-between bg-surface-container p-3 rounded-xl border border-secondary/50">
+                            <div class="flex items-center gap-2 overflow-hidden">
+                                <span class="material-symbols-outlined text-secondary">file_present</span>
+                                <div class="text-left truncate">
+                                    <p id="uploadedFileName" class="text-xs font-bold text-on-surface truncate">logo.pdf</p>
+                                    <p id="uploadedFileSize" class="text-[10px] text-on-surface-variant">1.2 MB</p>
+                                </div>
+                            </div>
+                            <button type="button" onclick="event.stopPropagation(); removeUploadedLogo();" class="p-1 hover:bg-surface-container-highest rounded-full text-on-surface-variant hover:text-error transition-colors" title="Eliminar archivo">
+                                <span class="material-symbols-outlined text-base">close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider">4. Especificación Adicional (Opcional)</label>
                     <textarea id="drawerNoteInput" rows="2" placeholder="Ej: Impresión a 1 tinta negra por ambos lados, logo centrado..." class="w-full bg-surface-container border border-outline-variant/30 rounded-xl p-3 text-xs text-on-surface focus:ring-2 focus:ring-secondary outline-none placeholder:text-on-surface-variant/50"></textarea>
                 </div>
             </div>
