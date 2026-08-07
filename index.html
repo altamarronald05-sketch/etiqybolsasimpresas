@@ -226,6 +226,83 @@
                 </div>
             </section>
 
+            
+            <!-- EMBEDDED CATALOG SECTION -->
+            <!-- Catalog Header & Search Banner -->
+            <section class="relative px-6 md:px-margin-desktop pt-8 pb-4 max-w-container-max mx-auto">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-bold uppercase tracking-wider">
+                        <span class="material-symbols-outlined text-sm">inventory_2</span>
+                        <span>Catálogo Oficial</span>
+                    </div>
+                    <h1 class="font-headline text-3xl md:text-5xl font-extrabold text-on-surface">Catálogo de Empaques y Etiquetas</h1>
+                    <p class="text-on-surface-variant text-base">
+                        Explora nuestros modelos disponibles, filtra por categoría, consulta precios con descuento por volumen y cotiza directamente a WhatsApp.
+                    </p>
+
+                    <!-- Search Input Bar -->
+                    <div class="w-full max-w-xl mx-auto relative pt-2">
+                        <div class="relative w-full">
+                            <input id="searchInput" oninput="handleSearch()" type="text" placeholder="Buscar por nombre (ej. Bolsa Kraft, Rollos...)" class="w-full bg-surface-container-high border border-outline-variant/40 rounded-2xl py-3.5 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 text-sm"/>
+                            <span class="material-symbols-outlined absolute left-4 top-[14px] text-on-surface-variant">search</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filter Pills & Sorting Control Bar -->
+            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-4 border-y border-outline-variant/20">
+                    
+                    <!-- Category Pills -->
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2" id="filterPillsContainer">
+                        <button onclick="setCategoryFilter('Todas')" class="filter-pill active-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-secondary text-on-secondary" data-category="Todas">Todas</button>
+                        <button onclick="setCategoryFilter('Bolsas Kraft')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Bolsas Kraft">Bolsas Kraft</button>
+                        <button onclick="setCategoryFilter('Bolsas Plásticas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Bolsas Plásticas">Bolsas Plásticas</button>
+                        <button onclick="setCategoryFilter('Etiquetas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Etiquetas">Etiquetas en Rollo</button>
+                        <button onclick="setCategoryFilter('Cajas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Cajas">Cajas & Cintas</button>
+                    </div>
+
+                    <!-- Offers Toggle & Sort dropdown -->
+                    <div class="flex items-center gap-3">
+                        <button id="offersToggleBtn" onclick="toggleOffersOnly()" class="px-3.5 py-1.5 rounded-xl border border-outline-variant/40 bg-surface-container-high text-on-surface-variant text-xs font-bold flex items-center gap-1.5 hover:border-secondary transition-all">
+                            <span class="material-symbols-outlined text-sm text-secondary">local_offer</span>
+                            <span>Solo Ofertas</span>
+                        </button>
+
+                        <div class="relative">
+                            <select id="sortSelect" onchange="handleSortChange(this.value)" class="bg-surface-container-high border border-outline-variant/40 text-on-surface text-xs font-semibold rounded-xl px-3 py-1.5 pr-8 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none cursor-pointer">
+                                <option value="default">Ordenar por: Relevancia</option>
+                                <option value="price-asc">Precio: Menor a Mayor</option>
+                                <option value="price-desc">Precio: Mayor a Menor</option>
+                                <option value="name">Nombre: A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Product Grid -->
+            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Products rendered via JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="noResultsState" class="hidden text-center py-16 space-y-4">
+                    <span class="material-symbols-outlined text-5xl text-on-surface-variant">search_off</span>
+                    <h3 class="font-headline font-bold text-xl text-on-surface">No se encontraron productos</h3>
+                    <p class="text-on-surface-variant text-sm">Intenta con otro término de búsqueda o desactiva el filtro de ofertas.</p>
+                    <button onclick="resetFilters()" class="bg-secondary text-on-secondary px-6 py-2.5 rounded-xl font-semibold text-xs mt-2">
+                        Restablecer Filtros
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    
+
             <!-- Por Qué Elegirnos Preview -->
             <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
                 <div class="bg-surface-container-low rounded-3xl p-8 md:p-12 border border-outline-variant/30 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -293,7 +370,155 @@
         </div>
     </main>
 
-    <!-- GLOBAL FOOTER -->
+    <!-- WHATSAPP QUOTE DRAWER -->
+    <div id="quoteDrawer" class="fixed inset-0 z-[100] invisible pointer-events-none transition-all duration-300">
+        <div id="drawerBackdrop" onclick="closeQuoteDrawer()" class="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+        <div id="drawerPanel" class="absolute right-0 top-0 h-full w-full max-w-md bg-surface-container-low translate-x-full transition-transform duration-300 ease-out shadow-2xl flex flex-col border-l border-outline-variant/30">
+            <div class="p-6 border-b border-outline-variant/20 flex items-center justify-between bg-surface-container">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary">
+                        <span class="material-symbols-outlined text-xl">shopping_bag</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline font-bold text-base text-on-surface">Solicitar Cotización</h3>
+                        <p class="text-xs text-on-surface-variant">Respuesta inmediata por WhatsApp</p>
+                    </div>
+                </div>
+                <button onclick="closeQuoteDrawer()" class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-container-high transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+
+            <div class="p-6 flex-grow overflow-y-auto space-y-6">
+                <!-- Selected Product Preview -->
+                <div class="flex gap-4 p-4 rounded-2xl bg-surface-container border border-outline-variant/30">
+                    <img id="drawerProductImg" src="assets/bolsas_kraft.png" alt="Producto" class="w-16 h-16 rounded-xl object-cover border border-outline-variant/40 shrink-0"/>
+                    <div class="space-y-1">
+                        <span id="drawerProductCategory" class="text-[10px] font-bold uppercase tracking-wider text-secondary">Bolsas Kraft</span>
+                        <h4 id="drawerProductTitle" class="font-headline font-bold text-sm text-on-surface line-clamp-1">Bolsa Kraft Boutique Impresa</h4>
+                        <span id="drawerMoqBadge" class="inline-block text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded font-medium">Pedido mínimo: 100 uds</span>
+                    </div>
+                </div>
+
+                <!-- Size Selector -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">1. Selecciona el Formato / Medida</label>
+                    <div id="drawerSizeButtons" class="grid grid-cols-3 gap-2">
+                        <!-- Buttons rendered via JS -->
+                    </div>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">2. Cantidad Requerida (Unidades)</label>
+                    <div class="flex items-center gap-3">
+                        <button onclick="changeQuantity(-100)" class="w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-container-highest font-bold text-lg text-on-surface flex items-center justify-center transition-colors border border-outline-variant/30">-</button>
+                        <input id="drawerQuantityInput" type="number" value="100" min="100" step="50" class="flex-grow bg-surface-container-high border border-outline-variant/40 rounded-xl py-2.5 text-center font-headline font-bold text-base text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none"/>
+                        <button onclick="changeQuantity(100)" class="w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-container-highest font-bold text-lg text-on-surface flex items-center justify-center transition-colors border border-outline-variant/30">+</button>
+                    </div>
+                    <p class="text-[11px] text-on-surface-variant/70 italic">*A mayor volumen obtienes menor precio por unidad.</p>
+                </div>
+
+                <!-- Image / Logo Upload Section -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">3. Logotipo o Imagen de Referencia (Opcional)</label>
+                    <div id="drawerDropzoneEmpty" class="border-2 border-dashed border-outline-variant/50 hover:border-secondary/70 rounded-2xl p-4 text-center cursor-pointer transition-colors bg-surface-container-high/50 hover:bg-surface-container-high relative" onclick="document.getElementById('drawerLogoInput').click()">
+                        <input type="file" id="drawerLogoInput" accept="image/*" class="hidden" onchange="handleDrawerLogoUpload(this)">
+                        <span class="material-symbols-outlined text-3xl text-secondary mb-1">add_photo_alternate</span>
+                        <p class="text-xs font-semibold text-on-surface">Haz clic para adjuntar tu logo o referencia</p>
+                        <p class="text-[10px] text-on-surface-variant">PNG, JPG, SVG o WEBP (Máx. 10 MB)</p>
+                    </div>
+
+                    <div id="drawerDropzoneSelected" class="hidden p-3 rounded-xl bg-surface-container-high border border-secondary/40 flex items-center justify-between">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <img id="drawerLogoPreview" src="" alt="Vista previa del logo" class="w-10 h-10 rounded-lg object-cover border border-outline-variant/30 shrink-0"/>
+                            <div class="truncate">
+                                <p id="drawerLogoName" class="text-xs font-bold text-on-surface truncate">logo.png</p>
+                                <p id="drawerLogoSize" class="text-[10px] text-on-surface-variant">1.2 MB</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="removeDrawerLogo()" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container-highest transition-colors">
+                            <span class="material-symbols-outlined text-lg">delete</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Logo Note -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">4. Detalles / Tintas de Impresión</label>
+                    <textarea id="drawerNoteInput" rows="3" placeholder="Ej: Impresión a 2 tintas con mi logotipo centrado, asas del mismo color..." class="w-full bg-surface-container-high border border-outline-variant/40 rounded-xl p-3 text-xs text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none placeholder:text-on-surface-variant/50 resize-none"></textarea>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-outline-variant/20 bg-surface-container space-y-3">
+                <button onclick="sendWhatsAppQuote()" class="w-full bg-secondary hover:bg-[#e09e5c] text-on-secondary py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-secondary/20">
+                    <span class="material-symbols-outlined text-lg">chat</span>
+                    <span>Enviar Cotización a WhatsApp</span>
+                </button>
+                <p class="text-[10px] text-center text-on-surface-variant">Serás redirigido al chat oficial de etiqybolsasimpresas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="productModal" class="fixed inset-0 z-[100] invisible pointer-events-none transition-all duration-300 flex items-center justify-center p-4">
+        <div id="modalBackdrop" onclick="closeProductModal()" class="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+        <div id="modalPanel" class="relative w-full max-w-2xl bg-surface-container-low rounded-3xl border border-outline-variant/30 shadow-2xl scale-95 opacity-0 transition-all duration-300 overflow-hidden flex flex-col max-h-[90vh]">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-surface/80 hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
+
+            <div class="overflow-y-auto p-6 md:p-8 space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-surface-container border border-outline-variant/20">
+                        <img id="modalImg" src="assets/bolsas_kraft.png" alt="Producto" class="w-full h-full object-cover"/>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <span id="modalCategory" class="text-xs font-bold uppercase tracking-wider text-secondary">Categoría</span>
+                        <h3 id="modalTitle" class="font-headline font-bold text-2xl text-on-surface leading-tight">Nombre del Producto</h3>
+                        <p id="modalDesc" class="text-on-surface-variant text-xs leading-relaxed">Descripción detallada del empaque...</p>
+                        
+                        <div id="modalPriceContainer" class="flex items-baseline gap-2 pt-2 border-t border-outline-variant/20">
+                            <!-- Price rendered via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specs -->
+                <div class="space-y-3 pt-4 border-t border-outline-variant/20">
+                    <h4 class="font-headline font-bold text-sm text-on-surface uppercase tracking-wider">Ficha Técnica</h4>
+                    <ul id="modalSpecsList" class="text-xs space-y-2">
+                        <!-- Specs rendered via JS -->
+                    </ul>
+                </div>
+
+                <!-- Volume Rates -->
+                <div class="space-y-3 pt-4 border-t border-outline-variant/20">
+                    <h4 class="font-headline font-bold text-sm text-on-surface uppercase tracking-wider">Escala de Precios por Volumen</h4>
+                    <div id="modalVolumeGrid" class="grid grid-cols-3 gap-3">
+                        <!-- Volume rates rendered via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-outline-variant/20 bg-surface-container flex items-center justify-end gap-3 shrink-0">
+                <button onclick="closeProductModal()" class="px-5 py-2.5 rounded-xl border border-outline-variant/40 text-on-surface hover:bg-surface-container-high text-xs font-semibold">
+                    Cerrar
+                </button>
+                <button id="modalQuoteBtn" class="bg-secondary text-on-secondary px-6 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-[#e09e5c] transition-all shadow-md">
+                    <span class="material-symbols-outlined text-base">shopping_bag</span>
+                    <span>Cotizar Este Empaque</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    
+
+<!-- GLOBAL FOOTER -->
     <footer class="bg-surface-container-lowest border-t border-outline-variant/20 pt-16 pb-8">
         <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
             <div class="space-y-4">
