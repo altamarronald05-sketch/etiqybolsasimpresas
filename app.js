@@ -1,31 +1,38 @@
-﻿// Logo Upload State
-let uploadedLogoFile = null;
+﻿// Logo Upload State for Quote Drawer
+let uploadedDrawerLogoFile = null;
 
-function handleLogoUpload(input) {
+function handleDrawerLogoUpload(input) {
     if (input.files && input.files[0]) {
         const file = input.files[0];
-        uploadedLogoFile = file;
+        uploadedDrawerLogoFile = file;
         
-        const nameEl = document.getElementById('uploadedFileName');
-        const sizeEl = document.getElementById('uploadedFileSize');
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const previewEl = document.getElementById('drawerLogoPreview');
+            if (previewEl) previewEl.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        const nameEl = document.getElementById('drawerLogoName');
+        const sizeEl = document.getElementById('drawerLogoSize');
         if (nameEl) nameEl.textContent = file.name;
         if (sizeEl) sizeEl.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
-        
-        const emptyState = document.getElementById('dropzoneEmptyState');
-        const selectedState = document.getElementById('dropzoneSelectedState');
-        if (emptyState) emptyState.classList.add('hidden');
-        if (selectedState) selectedState.classList.remove('hidden');
+
+        const emptyEl = document.getElementById('drawerDropzoneEmpty');
+        const selectedEl = document.getElementById('drawerDropzoneSelected');
+        if (emptyEl) emptyEl.classList.add('hidden');
+        if (selectedEl) selectedEl.classList.remove('hidden');
     }
 }
 
-function removeUploadedLogo() {
-    uploadedLogoFile = null;
-    const input = document.getElementById('logoFileInput');
+function removeDrawerLogo() {
+    uploadedDrawerLogoFile = null;
+    const input = document.getElementById('drawerLogoInput');
     if (input) input.value = '';
-    const emptyState = document.getElementById('dropzoneEmptyState');
-    const selectedState = document.getElementById('dropzoneSelectedState');
-    if (emptyState) emptyState.classList.remove('hidden');
-    if (selectedState) selectedState.classList.add('hidden');
+    const emptyEl = document.getElementById('drawerDropzoneEmpty');
+    const selectedEl = document.getElementById('drawerDropzoneSelected');
+    if (emptyEl) emptyEl.classList.remove('hidden');
+    if (selectedEl) selectedEl.classList.add('hidden');
 }
 
 // Active Application State
@@ -197,7 +204,6 @@ let selectedSize = '';
 // WhatsApp Business Contact
 const WHATSAPP_PHONE = "573506765219";
 
-// Navigation helper
 function navigateTo(view) {
     if (view === 'catalogo') {
         window.location.href = 'catalogo.html';
@@ -210,7 +216,6 @@ function navigateTo(view) {
     }
 }
 
-// Load products async or use fallback
 async function loadProducts() {
     try {
         const response = await fetch('data/products.json');
@@ -332,10 +337,10 @@ function renderProducts() {
 
         return `
         <div class="group bg-surface-container-low rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-secondary/60 transition-all duration-300 flex flex-col h-full hover:shadow-xl hover:shadow-secondary/5 transform hover:-translate-y-1">
-            <div class="relative aspect-square overflow-hidden bg-surface-container cursor-pointer" onclick="openProductDetail(${item.id})">
-                <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
+            <div class="relative w-full h-52 bg-surface-container overflow-hidden cursor-pointer" onclick="openProductDetail(${item.id})">
+                <img src="${item.img}" alt="${item.name}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="this.onerror=null; this.src='assets/bolsas_kraft.png';"/>
                 
-                <div class="absolute top-3 left-3 flex flex-col gap-1.5">
+                <div class="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
                     <span class="bg-primary-container/90 backdrop-blur-sm text-secondary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border border-secondary/20 shadow-md">
                         ${item.moq}
                     </span>
@@ -360,7 +365,7 @@ function renderProducts() {
                     <span class="text-[10px] text-on-surface-variant/80 font-normal">/unidad</span>
                 </div>
 
-                <div class="flex items-center gap-1.5 pt-1">
+                <div class="flex flex-wrap items-center gap-1.5 pt-1">
                     ${item.sizes.map(s => `<span class="px-2 py-0.5 rounded border border-outline-variant/40 text-[10px] text-on-surface font-semibold">${s}</span>`).join('')}
                 </div>
 
@@ -479,6 +484,7 @@ function openQuoteDrawer(productId) {
     if (moqEl) moqEl.textContent = `Pedido mínimo: ${product.moq}`;
     if (qtyInput) qtyInput.value = 100;
     if (noteInput) noteInput.value = '';
+    removeDrawerLogo();
     
     const sizeContainer = document.getElementById('drawerSizeButtons');
     selectedSize = product.sizes[0] || 'Estándar';
@@ -555,8 +561,12 @@ function sendWhatsAppQuote() {
     message += `📐 *Medida/Formato:* ${selectedSize}\n`;
     message += `🔢 *Cantidad Requerida:* ${quantity} unidades\n`;
 
+    if (uploadedDrawerLogoFile) {
+        message += `📷 *Imagen/Logotipo:* Te adjunto la imagen "${uploadedDrawerLogoFile.name}" en este chat.\n`;
+    }
+
     if (note) {
-        message += `📝 *Detalles/Logotipo:* ${note}\n`;
+        message += `📝 *Detalles de Impresión:* ${note}\n`;
     }
 
     message += `\nQuedo atento a la cotización formal y tiempos de entrega. ¡Muchas gracias!`;
@@ -573,16 +583,14 @@ function openDirectWhatsApp(customMsg) {
     window.open(`https://wa.me/${WHATSAPP_PHONE}?text=${text}`, '_blank');
 }
 
-function downloadPDFCatalog() {
-    window.print();
-}
-
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     if (menu) menu.classList.toggle('hidden');
 }
 
-// Attach all interactive functions to window for global HTML onclick availability
+// Window global bindings
+window.handleDrawerLogoUpload = handleDrawerLogoUpload;
+window.removeDrawerLogo = removeDrawerLogo;
 window.handleLogoUpload = handleLogoUpload;
 window.removeUploadedLogo = removeUploadedLogo;
 window.navigateTo = navigateTo;
@@ -600,10 +608,9 @@ window.selectSize = selectSize;
 window.changeQuantity = changeQuantity;
 window.sendWhatsAppQuote = sendWhatsAppQuote;
 window.openDirectWhatsApp = openDirectWhatsApp;
-window.downloadPDFCatalog = downloadPDFCatalog;
 window.toggleMobileMenu = toggleMobileMenu;
 
-// Initialization on DOM ready
+// DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('productGrid')) {
         const urlParams = new URLSearchParams(window.location.search);

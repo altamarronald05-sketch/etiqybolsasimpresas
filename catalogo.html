@@ -81,10 +81,6 @@
             </nav>
 
             <div class="hidden sm:flex items-center gap-4">
-                <button onclick="downloadPDFCatalog()" class="text-xs font-bold text-on-surface-variant hover:text-secondary flex items-center gap-1.5 transition-colors" title="Descargar o imprimir catálogo en PDF">
-                    <span class="material-symbols-outlined text-base">picture_as_pdf</span>
-                    <span>Descargar PDF</span>
-                </button>
                 <button onclick="openDirectWhatsApp('Hola! Quisiera solicitar una cotización de empaques impresos.')" class="bg-secondary text-on-secondary px-5 py-2.5 rounded-xl text-xs font-bold hover:shadow-lg hover:shadow-secondary/20 hover:bg-[#e09e5c] transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
                     <span class="material-symbols-outlined text-sm">chat</span>
                     <span>Cotizar por WhatsApp</span>
@@ -126,16 +122,12 @@
                         Explora nuestros modelos disponibles, filtra por categoría, consulta precios con descuento por volumen y cotiza directamente a WhatsApp.
                     </p>
 
-                    <!-- Search Input & PDF Download -->
-                    <div class="w-full max-w-xl mx-auto relative pt-2 flex items-center gap-3">
-                        <div class="relative flex-grow">
+                    <!-- Search Input Bar -->
+                    <div class="w-full max-w-xl mx-auto relative pt-2">
+                        <div class="relative w-full">
                             <input id="searchInput" oninput="handleSearch()" type="text" placeholder="Buscar por nombre (ej. Bolsa Kraft, Rollos...)" class="w-full bg-surface-container-high border border-outline-variant/40 rounded-2xl py-3.5 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 text-sm"/>
                             <span class="material-symbols-outlined absolute left-4 top-[14px] text-on-surface-variant">search</span>
                         </div>
-                        <button onclick="downloadPDFCatalog()" class="bg-secondary text-on-secondary px-5 py-3.5 rounded-2xl text-xs font-bold flex items-center gap-2 hover:bg-[#e09e5c] transition-all shadow-md shrink-0" title="Imprimir o guardar catálogo en PDF">
-                            <span class="material-symbols-outlined text-base">picture_as_pdf</span>
-                            <span class="hidden sm:inline">Descargar PDF</span>
-                        </button>
                     </div>
                 </div>
             </section>
@@ -243,9 +235,33 @@
                     <p class="text-[11px] text-on-surface-variant/70 italic">*A mayor volumen obtienes menor precio por unidad.</p>
                 </div>
 
+                <!-- Image / Logo Upload Section -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">3. Logotipo o Imagen de Referencia (Opcional)</label>
+                    <div id="drawerDropzoneEmpty" class="border-2 border-dashed border-outline-variant/50 hover:border-secondary/70 rounded-2xl p-4 text-center cursor-pointer transition-colors bg-surface-container-high/50 hover:bg-surface-container-high relative" onclick="document.getElementById('drawerLogoInput').click()">
+                        <input type="file" id="drawerLogoInput" accept="image/*" class="hidden" onchange="handleDrawerLogoUpload(this)">
+                        <span class="material-symbols-outlined text-3xl text-secondary mb-1">add_photo_alternate</span>
+                        <p class="text-xs font-semibold text-on-surface">Haz clic para adjuntar tu logo o referencia</p>
+                        <p class="text-[10px] text-on-surface-variant">PNG, JPG, SVG o WEBP (Máx. 10 MB)</p>
+                    </div>
+
+                    <div id="drawerDropzoneSelected" class="hidden p-3 rounded-xl bg-surface-container-high border border-secondary/40 flex items-center justify-between">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <img id="drawerLogoPreview" src="" alt="Vista previa del logo" class="w-10 h-10 rounded-lg object-cover border border-outline-variant/30 shrink-0"/>
+                            <div class="truncate">
+                                <p id="drawerLogoName" class="text-xs font-bold text-on-surface truncate">logo.png</p>
+                                <p id="drawerLogoSize" class="text-[10px] text-on-surface-variant">1.2 MB</p>
+                            </div>
+                        </div>
+                        <button type="button" onclick="removeDrawerLogo()" class="text-on-surface-variant hover:text-secondary p-1 rounded-lg hover:bg-surface-container-highest transition-colors">
+                            <span class="material-symbols-outlined text-lg">delete</span>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Custom Logo Note -->
                 <div class="space-y-2">
-                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">3. Detalles / Tintas de Impresión</label>
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">4. Detalles / Tintas de Impresión</label>
                     <textarea id="drawerNoteInput" rows="3" placeholder="Ej: Impresión a 2 tintas con mi logotipo centrado, asas del mismo color..." class="w-full bg-surface-container-high border border-outline-variant/40 rounded-xl p-3 text-xs text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none placeholder:text-on-surface-variant/50 resize-none"></textarea>
                 </div>
             </div>
@@ -378,4 +394,3 @@
     <script type="module" src="app.js"></script>
 </body>
 </html>
-
