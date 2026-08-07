@@ -1,0 +1,381 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Catálogo de Empaques y Etiquetas - etiqybolsasimpresas</title>
+    <meta name="description" content="Consulta nuestro catálogo completo de bolsas kraft impresas, bolsas plásticas boutique, etiquetas adhesivas en rollo y cajas de envío con cotización directa a WhatsApp."/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind Config inline import/style -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              background: '#0d131e',
+              surface: '#131b29',
+              'surface-container-lowest': '#090e17',
+              'surface-container-low': '#162132',
+              'surface-container': '#1a273b',
+              'surface-container-high': '#22324b',
+              'surface-container-highest': '#2b3d5b',
+              'on-surface': '#f0f4fc',
+              'on-surface-variant': '#94a3b8',
+              outline: '#475569',
+              'outline-variant': '#334155',
+              primary: '#ffb77d',
+              'on-primary': '#4d2600',
+              'primary-container': '#381c00',
+              secondary: '#f59e0b',
+              'on-secondary': '#451a03',
+              'secondary-container': '#78350f',
+              'on-secondary-container': '#fef3c7'
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              headline: ['"Space Grotesk"', 'sans-serif']
+            },
+            spacing: {
+              'margin-desktop': '5rem',
+              'margin-mobile': '1.5rem',
+              'container-max': '1400px'
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-sans antialiased min-h-screen flex flex-col selection:bg-secondary selection:text-on-secondary">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant/20">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-[#d97707] flex items-center justify-center text-on-secondary shadow-lg shadow-secondary/20 group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">local_mall</span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-headline font-extrabold text-lg text-on-surface leading-none tracking-tight">etiqy<span class="text-secondary">.</span></span>
+                    <span class="text-[10px] text-on-surface-variant uppercase tracking-widest font-semibold">bolsasimpresas</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1">Inicio</a>
+                <a href="catalogo.html" class="nav-link text-secondary border-b-2 border-secondary font-bold text-sm py-1">Catálogo</a>
+                <a href="nosotros.html" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1">Por Qué Elegirnos</a>
+                <a href="galeria.html" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1">Galería de Trabajos</a>
+            </nav>
+
+            <div class="hidden sm:flex items-center gap-4">
+                <button onclick="downloadPDFCatalog()" class="text-xs font-bold text-on-surface-variant hover:text-secondary flex items-center gap-1.5 transition-colors" title="Descargar o imprimir catálogo en PDF">
+                    <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                    <span>Descargar PDF</span>
+                </button>
+                <button onclick="openDirectWhatsApp('Hola! Quisiera solicitar una cotización de empaques impresos.')" class="bg-secondary text-on-secondary px-5 py-2.5 rounded-xl text-xs font-bold hover:shadow-lg hover:shadow-secondary/20 hover:bg-[#e09e5c] transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">chat</span>
+                    <span>Cotizar por WhatsApp</span>
+                </button>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-on-surface p-2 rounded-lg hover:bg-surface-container-high transition-colors" aria-label="Abrir menú">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-surface-container border-b border-outline-variant/30 px-6 py-4 space-y-3">
+            <a href="index.html" class="block py-2 text-on-surface font-medium hover:text-secondary">Inicio</a>
+            <a href="catalogo.html" class="block py-2 text-secondary font-bold">Catálogo de Productos</a>
+            <a href="nosotros.html" class="block py-2 text-on-surface font-medium hover:text-secondary">Por Qué Elegirnos</a>
+            <a href="galeria.html" class="block py-2 text-on-surface font-medium hover:text-secondary">Galería de Trabajos</a>
+            <div class="pt-3 border-t border-outline-variant/20 flex flex-col gap-2">
+                <button onclick="openDirectWhatsApp('Hola! Quisiera cotizar empaques.')" class="w-full bg-secondary text-on-secondary py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm">chat</span>
+                    <span>Solicitar Cotización</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow pt-20">
+        <div class="space-y-10 pb-16">
+            
+            <!-- Catalog Header & Search Banner -->
+            <section class="relative px-6 md:px-margin-desktop pt-8 pb-4 max-w-container-max mx-auto">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-bold uppercase tracking-wider">
+                        <span class="material-symbols-outlined text-sm">inventory_2</span>
+                        <span>Catálogo Oficial</span>
+                    </div>
+                    <h1 class="font-headline text-3xl md:text-5xl font-extrabold text-on-surface">Catálogo de Empaques y Etiquetas</h1>
+                    <p class="text-on-surface-variant text-base">
+                        Explora nuestros modelos disponibles, filtra por categoría, consulta precios con descuento por volumen y cotiza directamente a WhatsApp.
+                    </p>
+
+                    <!-- Search Input & PDF Download -->
+                    <div class="w-full max-w-xl mx-auto relative pt-2 flex items-center gap-3">
+                        <div class="relative flex-grow">
+                            <input id="searchInput" oninput="handleSearch()" type="text" placeholder="Buscar por nombre (ej. Bolsa Kraft, Rollos...)" class="w-full bg-surface-container-high border border-outline-variant/40 rounded-2xl py-3.5 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 text-sm"/>
+                            <span class="material-symbols-outlined absolute left-4 top-[14px] text-on-surface-variant">search</span>
+                        </div>
+                        <button onclick="downloadPDFCatalog()" class="bg-secondary text-on-secondary px-5 py-3.5 rounded-2xl text-xs font-bold flex items-center gap-2 hover:bg-[#e09e5c] transition-all shadow-md shrink-0" title="Imprimir o guardar catálogo en PDF">
+                            <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                            <span class="hidden sm:inline">Descargar PDF</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filter Pills & Sorting Control Bar -->
+            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-4 border-y border-outline-variant/20">
+                    
+                    <!-- Category Pills -->
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2" id="filterPillsContainer">
+                        <button onclick="setCategoryFilter('Todas')" class="filter-pill active-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-secondary text-on-secondary" data-category="Todas">Todas</button>
+                        <button onclick="setCategoryFilter('Bolsas Kraft')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Bolsas Kraft">Bolsas Kraft</button>
+                        <button onclick="setCategoryFilter('Bolsas Plásticas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Bolsas Plásticas">Bolsas Plásticas</button>
+                        <button onclick="setCategoryFilter('Etiquetas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Etiquetas">Etiquetas en Rollo</button>
+                        <button onclick="setCategoryFilter('Cajas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Cajas">Cajas & Cintas</button>
+                    </div>
+
+                    <!-- Offers Toggle & Sort dropdown -->
+                    <div class="flex items-center gap-3">
+                        <button id="offersToggleBtn" onclick="toggleOffersOnly()" class="px-3.5 py-1.5 rounded-xl border border-outline-variant/40 bg-surface-container-high text-on-surface-variant text-xs font-bold flex items-center gap-1.5 hover:border-secondary transition-all">
+                            <span class="material-symbols-outlined text-sm text-secondary">local_offer</span>
+                            <span>Solo Ofertas</span>
+                        </button>
+
+                        <div class="relative">
+                            <select id="sortSelect" onchange="handleSortChange(this.value)" class="bg-surface-container-high border border-outline-variant/40 text-on-surface text-xs font-semibold rounded-xl px-3 py-1.5 pr-8 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none cursor-pointer">
+                                <option value="default">Ordenar por: Relevancia</option>
+                                <option value="price-asc">Precio: Menor a Mayor</option>
+                                <option value="price-desc">Precio: Mayor a Menor</option>
+                                <option value="name">Nombre: A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Product Grid -->
+            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Products rendered via JavaScript -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="noResultsState" class="hidden text-center py-16 space-y-4">
+                    <span class="material-symbols-outlined text-5xl text-on-surface-variant">search_off</span>
+                    <h3 class="font-headline font-bold text-xl text-on-surface">No se encontraron productos</h3>
+                    <p class="text-on-surface-variant text-sm">Intenta con otro término de búsqueda o desactiva el filtro de ofertas.</p>
+                    <button onclick="resetFilters()" class="bg-secondary text-on-secondary px-6 py-2.5 rounded-xl font-semibold text-xs mt-2">
+                        Restablecer Filtros
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- WHATSAPP QUOTE DRAWER -->
+    <div id="quoteDrawer" class="fixed inset-0 z-[100] invisible pointer-events-none transition-all duration-300">
+        <div id="drawerBackdrop" onclick="closeQuoteDrawer()" class="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+        <div id="drawerPanel" class="absolute right-0 top-0 h-full w-full max-w-md bg-surface-container-low translate-x-full transition-transform duration-300 ease-out shadow-2xl flex flex-col border-l border-outline-variant/30">
+            <div class="p-6 border-b border-outline-variant/20 flex items-center justify-between bg-surface-container">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary">
+                        <span class="material-symbols-outlined text-xl">shopping_bag</span>
+                    </div>
+                    <div>
+                        <h3 class="font-headline font-bold text-base text-on-surface">Solicitar Cotización</h3>
+                        <p class="text-xs text-on-surface-variant">Respuesta inmediata por WhatsApp</p>
+                    </div>
+                </div>
+                <button onclick="closeQuoteDrawer()" class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg hover:bg-surface-container-high transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+
+            <div class="p-6 flex-grow overflow-y-auto space-y-6">
+                <!-- Selected Product Preview -->
+                <div class="flex gap-4 p-4 rounded-2xl bg-surface-container border border-outline-variant/30">
+                    <img id="drawerProductImg" src="assets/bolsas_kraft.png" alt="Producto" class="w-16 h-16 rounded-xl object-cover border border-outline-variant/40 shrink-0"/>
+                    <div class="space-y-1">
+                        <span id="drawerProductCategory" class="text-[10px] font-bold uppercase tracking-wider text-secondary">Bolsas Kraft</span>
+                        <h4 id="drawerProductTitle" class="font-headline font-bold text-sm text-on-surface line-clamp-1">Bolsa Kraft Boutique Impresa</h4>
+                        <span id="drawerMoqBadge" class="inline-block text-[10px] text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded font-medium">Pedido mínimo: 100 uds</span>
+                    </div>
+                </div>
+
+                <!-- Size Selector -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">1. Selecciona el Formato / Medida</label>
+                    <div id="drawerSizeButtons" class="grid grid-cols-3 gap-2">
+                        <!-- Buttons rendered via JS -->
+                    </div>
+                </div>
+
+                <!-- Quantity Selector -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">2. Cantidad Requerida (Unidades)</label>
+                    <div class="flex items-center gap-3">
+                        <button onclick="changeQuantity(-100)" class="w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-container-highest font-bold text-lg text-on-surface flex items-center justify-center transition-colors border border-outline-variant/30">-</button>
+                        <input id="drawerQuantityInput" type="number" value="100" min="100" step="50" class="flex-grow bg-surface-container-high border border-outline-variant/40 rounded-xl py-2.5 text-center font-headline font-bold text-base text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none"/>
+                        <button onclick="changeQuantity(100)" class="w-10 h-10 rounded-xl bg-surface-container-high hover:bg-surface-container-highest font-bold text-lg text-on-surface flex items-center justify-center transition-colors border border-outline-variant/30">+</button>
+                    </div>
+                    <p class="text-[11px] text-on-surface-variant/70 italic">*A mayor volumen obtienes menor precio por unidad.</p>
+                </div>
+
+                <!-- Custom Logo Note -->
+                <div class="space-y-2">
+                    <label class="font-bold text-xs text-on-surface uppercase tracking-wider">3. Detalles / Tintas de Impresión</label>
+                    <textarea id="drawerNoteInput" rows="3" placeholder="Ej: Impresión a 2 tintas con mi logotipo centrado, asas del mismo color..." class="w-full bg-surface-container-high border border-outline-variant/40 rounded-xl p-3 text-xs text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none placeholder:text-on-surface-variant/50 resize-none"></textarea>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-outline-variant/20 bg-surface-container space-y-3">
+                <button onclick="sendWhatsAppQuote()" class="w-full bg-secondary hover:bg-[#e09e5c] text-on-secondary py-3.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-secondary/20">
+                    <span class="material-symbols-outlined text-lg">chat</span>
+                    <span>Enviar Cotización a WhatsApp</span>
+                </button>
+                <p class="text-[10px] text-center text-on-surface-variant">Serás redirigido al chat oficial de etiqybolsasimpresas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="productModal" class="fixed inset-0 z-[100] invisible pointer-events-none transition-all duration-300 flex items-center justify-center p-4">
+        <div id="modalBackdrop" onclick="closeProductModal()" class="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+
+        <div id="modalPanel" class="relative w-full max-w-2xl bg-surface-container-low rounded-3xl border border-outline-variant/30 shadow-2xl scale-95 opacity-0 transition-all duration-300 overflow-hidden flex flex-col max-h-[90vh]">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-surface/80 hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors">
+                <span class="material-symbols-outlined text-xl">close</span>
+            </button>
+
+            <div class="overflow-y-auto p-6 md:p-8 space-y-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-surface-container border border-outline-variant/20">
+                        <img id="modalImg" src="assets/bolsas_kraft.png" alt="Producto" class="w-full h-full object-cover"/>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <span id="modalCategory" class="text-xs font-bold uppercase tracking-wider text-secondary">Categoría</span>
+                        <h3 id="modalTitle" class="font-headline font-bold text-2xl text-on-surface leading-tight">Nombre del Producto</h3>
+                        <p id="modalDesc" class="text-on-surface-variant text-xs leading-relaxed">Descripción detallada del empaque...</p>
+                        
+                        <div id="modalPriceContainer" class="flex items-baseline gap-2 pt-2 border-t border-outline-variant/20">
+                            <!-- Price rendered via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specs -->
+                <div class="space-y-3 pt-4 border-t border-outline-variant/20">
+                    <h4 class="font-headline font-bold text-sm text-on-surface uppercase tracking-wider">Ficha Técnica</h4>
+                    <ul id="modalSpecsList" class="text-xs space-y-2">
+                        <!-- Specs rendered via JS -->
+                    </ul>
+                </div>
+
+                <!-- Volume Rates -->
+                <div class="space-y-3 pt-4 border-t border-outline-variant/20">
+                    <h4 class="font-headline font-bold text-sm text-on-surface uppercase tracking-wider">Escala de Precios por Volumen</h4>
+                    <div id="modalVolumeGrid" class="grid grid-cols-3 gap-3">
+                        <!-- Volume rates rendered via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-outline-variant/20 bg-surface-container flex items-center justify-end gap-3 shrink-0">
+                <button onclick="closeProductModal()" class="px-5 py-2.5 rounded-xl border border-outline-variant/40 text-on-surface hover:bg-surface-container-high text-xs font-semibold">
+                    Cerrar
+                </button>
+                <button id="modalQuoteBtn" class="bg-secondary text-on-secondary px-6 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2 hover:bg-[#e09e5c] transition-all shadow-md">
+                    <span class="material-symbols-outlined text-base">shopping_bag</span>
+                    <span>Cotizar Este Empaque</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- GLOBAL FOOTER -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant/20 pt-16 pb-8">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center text-on-secondary font-bold">
+                        <span class="material-symbols-outlined text-xl">local_mall</span>
+                    </div>
+                    <span class="font-headline font-extrabold text-lg text-on-surface">etiqy<span class="text-secondary">.</span></span>
+                </div>
+                <p class="text-on-surface-variant text-xs leading-relaxed max-w-xs">
+                    Fabricantes de bolsas kraft impresas, bolsas plásticas boutique, etiquetas adhesivas en rollo y empaques personalizados para marcas.
+                </p>
+            </div>
+
+            <div class="space-y-3">
+                <h5 class="font-headline font-bold text-sm text-secondary uppercase tracking-wider">Productos</h5>
+                <ul class="space-y-2 text-xs text-on-surface-variant">
+                    <li><a href="catalogo.html?categoria=Bolsas%20Kraft" class="hover:text-on-surface transition-colors">Bolsas Kraft Impresas</a></li>
+                    <li><a href="catalogo.html?categoria=Bolsas%20Pl%C3%A1sticas" class="hover:text-on-surface transition-colors">Bolsas Plásticas Boutique</a></li>
+                    <li><a href="catalogo.html?categoria=Etiquetas" class="hover:text-on-surface transition-colors">Etiquetas Adhesivas en Rollo</a></li>
+                    <li><a href="catalogo.html?categoria=Cajas" class="hover:text-on-surface transition-colors">Cajas y Cintas de Envíos</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h5 class="font-headline font-bold text-sm text-secondary uppercase tracking-wider">Navegación</h5>
+                <ul class="space-y-2 text-xs text-on-surface-variant">
+                    <li><a href="index.html" class="hover:text-on-surface transition-colors">Inicio</a></li>
+                    <li><a href="catalogo.html" class="hover:text-on-surface transition-colors">Catálogo Completo</a></li>
+                    <li><a href="nosotros.html" class="hover:text-on-surface transition-colors">Por Qué Elegirnos</a></li>
+                    <li><a href="galeria.html" class="hover:text-on-surface transition-colors">Galería de Trabajos</a></li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h5 class="font-headline font-bold text-sm text-secondary uppercase tracking-wider">Atención al Cliente</h5>
+                <ul class="space-y-2.5 text-xs text-on-surface-variant">
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-base">chat</span>
+                        <span>Atención directa en WhatsApp</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-base">local_shipping</span>
+                        <span>Envíos a todo el país</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-base">verified</span>
+                        <span>Instagram: @etiqybolsasimpresas</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="border-t border-outline-variant/10 py-6 px-6 md:px-margin-desktop max-w-container-max mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant/70">
+            <p>© 2026 etiqybolsasimpresas. Todos los derechos reservados.</p>
+            <p>Especialistas en packaging y etiquetas personalizadas.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
+

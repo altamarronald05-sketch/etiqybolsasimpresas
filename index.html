@@ -1,157 +1,118 @@
-<!DOCTYPE html>
-<html lang="es" class="dark">
+﻿<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>etiqybolsasimpresas | Empaques & Etiquetas Personalizadas</title>
+    <title>etiqybolsasimpresas - Empaques y Etiquetas Personalizadas</title>
+    <meta name="description" content="Fabricantes de bolsas kraft impresas, bolsas plásticas boutique, etiquetas adhesivas en rollo y empaques personalizados para marcas. Envíos a todo el país."/>
     
-    <!-- Tailwind CSS with form & container query plugins -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
-    <!-- Google Fonts & Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
-    <!-- Custom Tailwind Configuration -->
-    <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              colors: {
-                "surface": "#101415",
-                "surface-container": "#1d2022",
-                "surface-container-low": "#191c1e",
-                "surface-container-high": "#272a2c",
-                "surface-container-highest": "#323537",
-                "surface-container-lowest": "#0b0f10",
-                "on-surface": "#e0e3e5",
-                "on-surface-variant": "#c6c6cd",
-                "primary": "#bec6e0",
-                "primary-container": "#0f172a",
-                "on-primary": "#283044",
-                "secondary": "#ffb77d",
-                "secondary-container": "#d97707",
-                "on-secondary": "#4d2600",
-                "on-secondary-container": "#432100",
-                "tertiary": "#bcc7de",
-                "tertiary-container": "#0c1829",
-                "on-tertiary-container": "#768197",
-                "outline": "#909097",
-                "outline-variant": "#45464d",
-                "whatsapp": "#25D366"
-              },
-              borderRadius: {
-                "DEFAULT": "0.25rem",
-                "lg": "0.5rem",
-                "xl": "0.75rem",
-                "2xl": "1rem",
-                "3xl": "1.5rem",
-                "full": "9999px"
-              },
-              spacing: {
-                "margin-mobile": "16px",
-                "base": "8px",
-                "section-gap": "90px",
-                "gutter": "24px",
-                "container-max": "1280px",
-                "margin-desktop": "64px"
-              },
-              fontFamily: {
-                "body": ["Inter", "sans-serif"],
-                "headline": ["Montserrat", "sans-serif"]
-              }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Tailwind Config inline import/style -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              background: '#0d131e',
+              surface: '#131b29',
+              'surface-container-lowest': '#090e17',
+              'surface-container-low': '#162132',
+              'surface-container': '#1a273b',
+              'surface-container-high': '#22324b',
+              'surface-container-highest': '#2b3d5b',
+              'on-surface': '#f0f4fc',
+              'on-surface-variant': '#94a3b8',
+              outline: '#475569',
+              'outline-variant': '#334155',
+              primary: '#ffb77d',
+              'on-primary': '#4d2600',
+              'primary-container': '#381c00',
+              secondary: '#f59e0b',
+              'on-secondary': '#451a03',
+              'secondary-container': '#78350f',
+              'on-secondary-container': '#fef3c7'
+            },
+            fontFamily: {
+              sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+              headline: ['"Space Grotesk"', 'sans-serif']
+            },
+            spacing: {
+              'margin-desktop': '5rem',
+              'margin-mobile': '1.5rem',
+              'container-max': '1400px'
             }
           }
         }
-    </script>
-    <link rel="stylesheet" href="styles.css"/>
-
-    <link rel="canonical" href="https://etiqybolsasimpresas.vercel.app/"/>
-    <meta property="og:url" content="https://etiqybolsasimpresas.vercel.app/"/>
-    <meta property="og:title" content="etiqybolsasimpresas | Empaques & Etiquetas Personalizadas"/>
-    <meta property="og:description" content="Catálogo interactivo de bolsas kraft, plásticas, cajas e impresiones personalizadas con cotización a WhatsApp."/>
-
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MEASUREMENT_ID');
-    </script>
-
-    <!-- Meta Pixel Code (Instagram / Facebook Ads) -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'PIXEL_ID');
-      fbq('track', 'PageView');
+      }
     </script>
 </head>
-<body class="font-body bg-surface text-on-surface selection:bg-secondary selection:text-on-secondary min-h-screen flex flex-col antialiased overflow-x-hidden">
+<body class="bg-background text-on-surface font-sans antialiased min-h-screen flex flex-col selection:bg-secondary selection:text-on-secondary">
 
-    <!-- Unified Fixed Top Navigation -->
-    <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30 transition-all duration-300" id="mainHeader">
-        <div class="flex justify-between items-center px-6 md:px-margin-desktop py-4 max-w-container-max mx-auto">
-            <!-- Brand Logo -->
-            <a href="#inicio" onclick="navigateTo('inicio')" class="flex items-center gap-2 group cursor-pointer">
-                <div class="w-10 h-10 rounded-xl bg-secondary/10 border border-secondary/30 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-all">
-                    <span class="material-symbols-outlined text-2xl">local_mall</span>
+    <!-- NAVIGATION HEADER -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant/20">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-secondary to-[#d97707] flex items-center justify-center text-on-secondary shadow-lg shadow-secondary/20 group-hover:scale-105 transition-transform">
+                    <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">local_mall</span>
                 </div>
-                <div class="font-headline font-extrabold text-xl md:text-2xl tracking-tighter text-on-surface">
-                    <span class="text-on-surface">etiq</span><span class="text-secondary">y</span><span class="text-on-surface">bolsasimpresas</span>
+                <div class="flex flex-col">
+                    <span class="font-headline font-extrabold text-lg text-on-surface leading-none tracking-tight">etiqy<span class="text-secondary">.</span></span>
+                    <span class="text-[10px] text-on-surface-variant uppercase tracking-widest font-semibold">bolsasimpresas</span>
                 </div>
             </a>
 
-            <!-- Desktop Links -->
             <nav class="hidden md:flex items-center gap-8">
-                <a id="nav-inicio" href="#inicio" onclick="navigateTo('inicio')" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1 border-b-2 border-transparent">Inicio</a>
-                <a id="nav-catalogo" href="#catalogo" onclick="navigateTo('catalogo')" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1 border-b-2 border-transparent">Catálogo</a>
-                <a id="nav-nosotros" href="#nosotros" onclick="navigateTo('nosotros')" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1 border-b-2 border-transparent">Por Qué Elegirnos</a>
-                <a id="nav-galeria" href="#galeria" onclick="navigateTo('galeria')" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1 border-b-2 border-transparent">Galería</a>
+                <a href="index.html" class="nav-link text-secondary border-b-2 border-secondary font-bold text-sm py-1">Inicio</a>
+                <a href="catalogo.html" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1">Catálogo</a>
+                <a href="nosotros.html" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1">Por Qué Elegirnos</a>
+                <a href="galeria.html" class="nav-link font-medium text-sm text-on-surface-variant hover:text-on-surface transition-colors py-1">Galería de Trabajos</a>
             </nav>
 
-            <!-- Action Buttons -->
-            <div class="flex items-center gap-3">
-                <button onclick="downloadPDFCatalog()" class="hidden lg:flex items-center gap-2 bg-surface-container-high hover:bg-surface-container-highest text-on-surface border border-outline-variant/40 px-4 py-2 rounded-xl text-xs font-semibold transition-all">
-                    <span class="material-symbols-outlined text-secondary text-base">picture_as_pdf</span>
-                    <span>Descargar PDF</span>
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="catalogo.html" class="text-xs font-bold text-on-surface-variant hover:text-secondary flex items-center gap-1.5 transition-colors">
+                    <span class="material-symbols-outlined text-base">picture_as_pdf</span>
+                    <span>Ver Catálogo</span>
+                </a>
+                <button onclick="openDirectWhatsApp('Hola! Quisiera solicitar una cotización de empaques impresos.')" class="bg-secondary text-on-secondary px-5 py-2.5 rounded-xl text-xs font-bold hover:shadow-lg hover:shadow-secondary/20 hover:bg-[#e09e5c] transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-sm">chat</span>
+                    <span>Cotizar por WhatsApp</span>
                 </button>
-                <button onclick="openDirectWhatsApp()" class="bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-2.5 rounded-xl font-medium text-sm hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-green-950/20 flex items-center gap-2">
-                    <span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">chat</span>
-                    <span class="hidden sm:inline">WhatsApp</span>
-                </button>
-                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-on-surface hover:bg-surface-container-high rounded-lg transition-colors">
-                    <span class="material-symbols-outlined text-2xl">menu</span>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-on-surface p-2 rounded-lg hover:bg-surface-container-high transition-colors" aria-label="Abrir menú">
+                <span class="material-symbols-outlined text-2xl">menu</span>
+            </button>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-surface-container border-b border-outline-variant/30 px-6 py-4 space-y-3">
+            <a href="index.html" class="block py-2 text-secondary font-bold">Inicio</a>
+            <a href="catalogo.html" class="block py-2 text-on-surface font-medium hover:text-secondary">Catálogo de Productos</a>
+            <a href="nosotros.html" class="block py-2 text-on-surface font-medium hover:text-secondary">Por Qué Elegirnos</a>
+            <a href="galeria.html" class="block py-2 text-on-surface font-medium hover:text-secondary">Galería de Trabajos</a>
+            <div class="pt-3 border-t border-outline-variant/20 flex flex-col gap-2">
+                <button onclick="openDirectWhatsApp('Hola! Quisiera cotizar empaques.')" class="w-full bg-secondary text-on-secondary py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-sm">chat</span>
+                    <span>Solicitar Cotización</span>
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-surface-container-low border-b border-outline-variant/30 px-6 py-4 space-y-3">
-            <a href="#inicio" onclick="navigateTo('inicio'); toggleMobileMenu();" class="block py-2 text-on-surface font-medium hover:text-secondary">Inicio</a>
-            <a href="#catalogo" onclick="navigateTo('catalogo'); toggleMobileMenu();" class="block py-2 text-on-surface font-medium hover:text-secondary">Catálogo de Productos</a>
-            <a href="#nosotros" onclick="navigateTo('nosotros'); toggleMobileMenu();" class="block py-2 text-on-surface font-medium hover:text-secondary">Por Qué Elegirnos</a>
-            <a href="#galeria" onclick="navigateTo('galeria'); toggleMobileMenu();" class="block py-2 text-on-surface font-medium hover:text-secondary">Galería de Trabajos</a>
-            <button onclick="downloadPDFCatalog(); toggleMobileMenu();" class="w-full text-left py-2 text-secondary font-medium flex items-center gap-2">
-                <span class="material-symbols-outlined text-base">picture_as_pdf</span>
-                <span>Descargar Catálogo en PDF</span>
-            </button>
-        </div>
     </header>
 
-    <!-- MAIN CONTENT CONTAINER -->
+    <!-- MAIN CONTENT -->
     <main class="flex-grow pt-20">
-
-        <!-- ================= VIEW 1: HOME PAGE ================= -->
-        <div id="view-home" class="page-view space-y-16 md:space-y-24">
+        <div class="space-y-16 md:space-y-24 pb-16">
             
             <!-- Hero Section -->
             <section class="relative pt-12 pb-16 lg:pt-24 lg:pb-28 overflow-hidden">
@@ -176,10 +137,10 @@
                         </p>
 
                         <div class="flex flex-wrap gap-4 pt-2">
-                            <button onclick="navigateTo('catalogo')" class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-secondary/20 hover:bg-[#e09e5c] transition-all transform hover:-translate-y-0.5 flex items-center gap-3">
+                            <a href="catalogo.html" class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold hover:shadow-xl hover:shadow-secondary/20 hover:bg-[#e09e5c] transition-all transform hover:-translate-y-0.5 flex items-center gap-3">
                                 <span>Ver Catálogo Completo</span>
                                 <span class="material-symbols-outlined text-xl">arrow_forward</span>
-                            </button>
+                            </a>
                             
                             <button onclick="openDirectWhatsApp('Hola! Quisiera solicitar una cotización personalizada de empaques.')" class="border border-outline-variant hover:border-secondary px-8 py-4 rounded-xl font-semibold text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-2">
                                 <span class="material-symbols-outlined text-secondary">chat</span>
@@ -188,7 +149,6 @@
                         </div>
                     </div>
 
-                    <!-- Hero Visual Showcase -->
                     <div class="hidden lg:block relative group">
                         <div class="absolute -inset-4 bg-secondary/20 blur-3xl opacity-30 group-hover:opacity-60 transition-opacity duration-700"></div>
                         <div class="relative glass-card p-4 rounded-2xl overflow-hidden shadow-2xl transform rotate-1 group-hover:rotate-0 transition-transform duration-500">
@@ -219,7 +179,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Category Card 1 -->
+                    <!-- Category 1 -->
                     <div class="group bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-secondary/60 transition-all duration-300 flex flex-col">
                         <div class="h-64 overflow-hidden relative">
                             <img src="assets/bolsas_kraft.png" alt="Bolsas Impresas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
@@ -228,14 +188,14 @@
                         <div class="p-6 md:p-8 flex flex-col flex-grow">
                             <h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Bolsas Impresas</h3>
                             <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Personalización completa en formatos boutique, bolsas de papel kraft, bolsas de polietileno y ecobags.</p>
-                            <button onclick="filterCatalogAndNavigate('Bolsas Kraft')" class="mt-auto inline-flex items-center gap-2 text-secondary font-semibold text-sm hover:gap-3 transition-all">
+                            <a href="catalogo.html?categoria=Bolsas%20Kraft" class="mt-auto inline-flex items-center gap-2 text-secondary font-semibold text-sm hover:gap-3 transition-all">
                                 <span>Ver Modelos de Bolsas</span>
                                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Category Card 2 -->
+                    <!-- Category 2 -->
                     <div class="group bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-secondary/60 transition-all duration-300 flex flex-col">
                         <div class="h-64 overflow-hidden relative">
                             <img src="assets/etiquetas_rollo.png" alt="Etiquetas Adhesivas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
@@ -244,140 +204,89 @@
                         <div class="p-6 md:p-8 flex flex-col flex-grow">
                             <h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Etiquetas Adhesivas</h3>
                             <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Etiquetas en rollo o pliego, acabados mate, brillantes, transparentes y foil metalizado de alta adherencia.</p>
-                            <button onclick="filterCatalogAndNavigate('Etiquetas')" class="mt-auto inline-flex items-center gap-2 text-secondary font-semibold text-sm hover:gap-3 transition-all">
+                            <a href="catalogo.html?categoria=Etiquetas" class="mt-auto inline-flex items-center gap-2 text-secondary font-semibold text-sm hover:gap-3 transition-all">
                                 <span>Ver Variedad de Etiquetas</span>
                                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
 
-                    <!-- Category Card 3 -->
+                    <!-- Category 3 -->
                     <div class="group bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/30 hover:border-secondary/60 transition-all duration-300 flex flex-col">
                         <div class="h-64 overflow-hidden relative">
-                            <img src="assets/cajas_impresas.png" alt="Cajas & Cintas Personalizadas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
-                            <div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-secondary">E-Commerce & Retail</div>
+                            <img src="assets/cajas_impresas.png" alt="Cajas E-commerce" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"/>
+                            <div class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-secondary">Envíos & Cintas</div>
                         </div>
                         <div class="p-6 md:p-8 flex flex-col flex-grow">
-                            <h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Cajas & Cintas</h3>
-                            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Cajas de cartón microcorrugado impresas y cintas de embalaje con tu logotipo impreso para envíos seguros.</p>
-                            <button onclick="filterCatalogAndNavigate('Cajas')" class="mt-auto inline-flex items-center gap-2 text-secondary font-semibold text-sm hover:gap-3 transition-all">
-                                <span>Ver Cajas & Cintas</span>
+                            <h3 class="font-headline text-2xl font-bold mb-3 text-on-surface">Cajas & Cintas de Envío</h3>
+                            <p class="text-on-surface-variant text-sm leading-relaxed mb-6">Cajas de cartón corrugado impresas a medida y cintas adhesivas personalizadas con el logo de tu negocio.</p>
+                            <a href="catalogo.html?categoria=Cajas" class="mt-auto inline-flex items-center gap-2 text-secondary font-semibold text-sm hover:gap-3 transition-all">
+                                <span>Ver Empaques de Envío</span>
                                 <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Value Proposition / Why Choose Us -->
-            <section id="nosotros" class="bg-surface-container-low py-16 md:py-20 border-y border-outline-variant/20">
-                <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop">
-                    <div class="text-center max-w-2xl mx-auto mb-14">
-                        <span class="text-secondary font-bold text-xs uppercase tracking-widest">Nuestra Garantía</span>
-                        <h2 class="font-headline text-3xl font-bold text-on-surface mt-2">¿Por Qué Trabajar Con Nosotros?</h2>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                        <div class="p-6 bg-surface-container rounded-2xl border border-outline-variant/20 flex flex-col items-center">
-                            <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-4">
-                                <span class="material-symbols-outlined text-3xl">local_shipping</span>
-                            </div>
-                            <h4 class="font-headline font-bold text-lg text-on-surface mb-2">Envíos Nacionales</h4>
-                            <p class="text-on-surface-variant text-xs leading-relaxed">Entregas seguras y puntuales a cualquier ciudad del país.</p>
-                        </div>
-
-                        <div class="p-6 bg-surface-container rounded-2xl border border-outline-variant/20 flex flex-col items-center">
-                            <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-4">
-                                <span class="material-symbols-outlined text-3xl">inventory_2</span>
-                            </div>
-                            <h4 class="font-headline font-bold text-lg text-on-surface mb-2">Cantidades Accesibles</h4>
-                            <p class="text-on-surface-variant text-xs leading-relaxed">Pedidos mínimos desde 100 unidades ideales para pequeños y medianos negocios.</p>
-                        </div>
-
-                        <div class="p-6 bg-surface-container rounded-2xl border border-outline-variant/20 flex flex-col items-center">
-                            <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-4">
-                                <span class="material-symbols-outlined text-3xl">high_quality</span>
-                            </div>
-                            <h4 class="font-headline font-bold text-lg text-on-surface mb-2">Impresión de Alta Precisión</h4>
-                            <p class="text-on-surface-variant text-xs leading-relaxed">Tecnología de impresión nítida que resalta cada línea de tu logotipo.</p>
-                        </div>
-
-                        <div class="p-6 bg-surface-container rounded-2xl border border-outline-variant/20 flex flex-col items-center">
-                            <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary mb-4">
-                                <span class="material-symbols-outlined text-3xl">support_agent</span>
-                            </div>
-                            <h4 class="font-headline font-bold text-lg text-on-surface mb-2">Asesoría de Diseño</h4>
-                            <p class="text-on-surface-variant text-xs leading-relaxed">Te orientamos en la adaptación de tu logo al formato y medidas del empaque.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Instagram Portfolio Section -->
-            <section id="galeria" class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
-                    <div>
-                        <span class="text-secondary font-bold text-xs uppercase tracking-widest">Inspiración Real</span>
-                        <h2 class="font-headline text-3xl font-bold text-on-surface mt-1">Trabajos Realizados para Marcas</h2>
-                        <p class="text-on-surface-variant text-sm mt-1 flex items-center gap-2">
-                            <span class="material-symbols-outlined text-secondary text-lg">camera</span>
-                            Síguenos en Instagram <span class="font-bold text-on-surface">@etiqybolsasimpresas</span>
+            <!-- Por Qué Elegirnos Preview -->
+            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="bg-surface-container-low rounded-3xl p-8 md:p-12 border border-outline-variant/30 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    <div class="space-y-6">
+                        <span class="text-secondary font-bold text-xs uppercase tracking-widest">Ventajas Competitivas</span>
+                        <h2 class="font-headline text-3xl md:text-4xl font-bold text-on-surface">¿Por Qué Elegir etiqybolsasimpresas?</h2>
+                        <p class="text-on-surface-variant text-sm md:text-base leading-relaxed">
+                            Acompañamos a marcas emergentes y consolidadas con asesoría técnica dedicada, bajos mínimos de compra y entregas seguras en todo el país.
                         </p>
-                    </div>
-                    <a href="https://www.instagram.com/etiqybolsasimpresas" target="_blank" class="bg-surface-container-high px-5 py-2.5 rounded-xl text-xs font-semibold border border-outline-variant/30 hover:bg-surface-container-highest transition-all flex items-center gap-2">
-                        <span>Ver Feed en Instagram</span>
-                        <span class="material-symbols-outlined text-sm">open_in_new</span>
-                    </a>
-                </div>
 
-                <!-- Instagram Grid -->
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="aspect-square rounded-xl overflow-hidden group relative">
-                        <img src="assets/bolsas_kraft.png" alt="Trabajo Cliente 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-center">
-                            <span class="material-symbols-outlined text-white text-3xl mb-1">favorite</span>
-                            <span class="text-white text-xs font-semibold">Bolsas Kraft Boutique</span>
+                        <div class="grid grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/20">
+                                <span class="material-symbols-outlined text-secondary text-2xl mb-1">verified_user</span>
+                                <h4 class="font-bold text-sm text-on-surface">Mínimos Flexibles</h4>
+                                <p class="text-xs text-on-surface-variant">Desde 100 unidades</p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-surface-container border border-outline-variant/20">
+                                <span class="material-symbols-outlined text-secondary text-2xl mb-1">local_shipping</span>
+                                <h4 class="font-bold text-sm text-on-surface">Envíos Nacionales</h4>
+                                <p class="text-xs text-on-surface-variant">Despacho garantizado</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <a href="nosotros.html" class="inline-flex items-center gap-2 text-secondary font-bold text-sm hover:gap-3 transition-all">
+                                <span>Conoce Más Sobre Nosotros</span>
+                                <span class="material-symbols-outlined text-base">arrow_forward</span>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="aspect-square rounded-xl overflow-hidden group relative">
-                        <img src="assets/etiquetas_rollo.png" alt="Trabajo Cliente 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-center">
-                            <span class="material-symbols-outlined text-white text-3xl mb-1">favorite</span>
-                            <span class="text-white text-xs font-semibold">Etiquetas Adhesivas Foil</span>
-                        </div>
-                    </div>
-
-                    <div class="aspect-square rounded-xl overflow-hidden group relative">
-                        <img src="assets/bolsas_plasticas.png" alt="Trabajo Cliente 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-center">
-                            <span class="material-symbols-outlined text-white text-3xl mb-1">favorite</span>
-                            <span class="text-white text-xs font-semibold">Bolsas Plásticas Boutique</span>
-                        </div>
-                    </div>
-
-                    <div class="aspect-square rounded-xl overflow-hidden group relative">
-                        <img src="assets/cajas_impresas.png" alt="Trabajo Cliente 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
-                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4 text-center">
-                            <span class="material-symbols-outlined text-white text-3xl mb-1">favorite</span>
-                            <span class="text-white text-xs font-semibold">Cajas de Envíos Impresas</span>
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl h-80">
+                        <img src="assets/etiquetas_rollo.png" alt="Proceso de fabricación" class="w-full h-full object-cover"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <p class="font-bold text-lg">Calidad Garantizada en Cada Impresión</p>
+                                <p class="text-xs opacity-80">Revisión minuciosa antes de cada despacho</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Call to Action Banner -->
-            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto pb-12">
-                <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-secondary-container/30 via-surface-container to-surface-container-high border border-secondary/30 p-10 lg:p-16 text-center">
-                    <div class="relative z-10 max-w-2xl mx-auto space-y-6">
-                        <h2 class="font-headline text-3xl lg:text-4xl font-bold text-on-surface">¿Listo para transformar la presentación de tus productos?</h2>
-                        <p class="text-on-surface-variant text-base">Explora nuestro catálogo completo con precios y especificaciones o cotiza de inmediato en WhatsApp.</p>
-                        <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
-                            <button onclick="navigateTo('catalogo')" class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold text-base hover:bg-[#e09e5c] transition-all shadow-lg">
-                                Ir al Catálogo de Productos
-                            </button>
-                            <button onclick="openDirectWhatsApp('Hola! Me gustaría asesoría para hacer empaques personalizados.')" class="bg-surface px-8 py-4 rounded-xl font-semibold text-base border border-outline-variant hover:bg-surface-container-highest transition-all">
-                                Hablar con un Asesor
+            <!-- CTA Banner -->
+            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-secondary/20 via-surface-container to-surface-container-high p-8 md:p-16 text-center border border-secondary/30">
+                    <div class="max-w-2xl mx-auto space-y-6">
+                        <h2 class="font-headline text-3xl md:text-4xl font-extrabold text-on-surface">¿Listo para impulsar el empaque de tu marca?</h2>
+                        <p class="text-on-surface-variant text-sm md:text-base">
+                            Explora nuestro catálogo completo o cotiza en tiempo real con uno de nuestros asesores por WhatsApp.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4 pt-2">
+                            <a href="catalogo.html" class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold hover:bg-[#e09e5c] transition-all shadow-lg">
+                                Explorar Catálogo
+                            </a>
+                            <button onclick="openDirectWhatsApp('Hola! Quisiera asesoría personalizada para elegir mis empaques.')" class="border border-outline-variant hover:border-secondary px-8 py-4 rounded-xl font-semibold text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-2">
+                                <span class="material-symbols-outlined text-secondary">chat</span>
+                                <span>Hablar con un Asesor</span>
                             </button>
                         </div>
                     </div>
@@ -385,289 +294,43 @@
             </section>
 
         </div>
-
-
-        <!-- ================= VIEW 2: CATALOG PAGE ================= -->
-        <div id="view-catalogo" class="page-view hidden space-y-10 pb-16">
-            
-            <!-- Catalog Header & Search Banner -->
-            <section class="relative px-6 md:px-margin-desktop pt-8 pb-8 max-w-container-max mx-auto">
-                <div class="text-center max-w-3xl mx-auto space-y-4">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-bold uppercase tracking-wider">
-                        <span>Catálogo Oficial</span>
-                    </div>
-                    <h1 class="font-headline text-3xl md:text-5xl font-extrabold text-on-surface">Catálogo de Empaques y Etiquetas</h1>
-                    <p class="text-on-surface-variant text-base">
-                        Explora nuestros modelos disponibles, filtra por categoría, consulta precios con descuento por volumen y cotiza directamente a WhatsApp.
-                    </p>
-
-                    <!-- Search Input & Download PDF Bar -->
-                    <div class="w-full max-w-xl mx-auto relative pt-2 flex items-center gap-3">
-                        <div class="relative flex-grow">
-                            <input id="searchInput" oninput="handleSearch()" type="text" placeholder="Buscar por nombre (ej. Bolsa Kraft, Rollos...)" class="w-full bg-surface-container-high border border-outline-variant/40 rounded-2xl py-3.5 pl-12 pr-4 text-on-surface focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/50 text-sm"/>
-                            <span class="material-symbols-outlined absolute left-4 top-[14px] text-on-surface-variant">search</span>
-                        </div>
-                        <button onclick="downloadPDFCatalog()" class="bg-secondary text-on-secondary px-5 py-3.5 rounded-2xl text-xs font-bold flex items-center gap-2 hover:bg-[#e09e5c] transition-all shadow-md shrink-0" title="Imprimir o guardar catálogo en PDF">
-                            <span class="material-symbols-outlined text-base">picture_as_pdf</span>
-                            <span class="hidden sm:inline">Descargar PDF</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Filter Pills & Sorting Control Bar -->
-            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4 py-4 border-y border-outline-variant/20">
-                    
-                    <!-- Category Pills -->
-                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-2" id="filterPillsContainer">
-                        <button onclick="setCategoryFilter('Todas')" class="filter-pill active-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-secondary text-on-secondary" data-category="Todas">Todas</button>
-                        <button onclick="setCategoryFilter('Bolsas Kraft')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Bolsas Kraft">Bolsas Kraft</button>
-                        <button onclick="setCategoryFilter('Bolsas Plásticas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Bolsas Plásticas">Bolsas Plásticas</button>
-                        <button onclick="setCategoryFilter('Etiquetas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Etiquetas">Etiquetas en Rollo</button>
-                        <button onclick="setCategoryFilter('Cajas')" class="filter-pill px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest" data-category="Cajas">Cajas & Cintas</button>
-                    </div>
-
-                    <!-- Sorting & Offers Controls -->
-                    <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
-                        <!-- Offers Toggle Button -->
-                        <button id="offersToggleBtn" onclick="toggleOffersOnly()" class="px-3.5 py-1.5 rounded-xl border border-outline-variant/40 bg-surface-container-high text-xs font-semibold text-on-surface-variant flex items-center gap-1.5 hover:border-secondary transition-all">
-                            <span class="material-symbols-outlined text-sm text-secondary">local_offer</span>
-                            <span>Solo Ofertas</span>
-                        </button>
-
-                        <!-- Sort Selector -->
-                        <div class="flex items-center gap-2">
-                            <span class="text-xs text-on-surface-variant hidden sm:inline">Ordenar:</span>
-                            <select id="sortSelect" onchange="handleSortChange(this.value)" class="bg-surface-container-high border border-outline-variant/40 text-on-surface text-xs rounded-xl py-1.5 px-3 focus:ring-2 focus:ring-secondary outline-none cursor-pointer">
-                                <option value="default">Relevancia</option>
-                                <option value="price-asc">Precio: Menor a Mayor</option>
-                                <option value="price-desc">Precio: Mayor a Menor</option>
-                                <option value="name">Nombre: A-Z</option>
-                            </select>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Product Grid -->
-            <section class="px-6 md:px-margin-desktop max-w-container-max mx-auto">
-                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Products rendered via JavaScript from products.json -->
-                </div>
-
-                <!-- Empty State if no search matches -->
-                <div id="noResultsState" class="hidden text-center py-16 space-y-4">
-                    <span class="material-symbols-outlined text-5xl text-on-surface-variant">search_off</span>
-                    <h3 class="font-headline font-bold text-xl text-on-surface">No se encontraron productos</h3>
-                    <p class="text-on-surface-variant text-sm">Intenta con otro término de búsqueda o desactiva el filtro de ofertas.</p>
-                    <button onclick="resetFilters()" class="bg-secondary text-on-secondary px-6 py-2.5 rounded-xl font-semibold text-xs mt-2">
-                        Restablecer Filtros
-                    </button>
-                </div>
-            </section>
-        </div>
-
     </main>
 
-    <!-- WHATSAPP QUOTE DRAWER / MODAL OVERLAY -->
-    <div id="quoteDrawer" class="fixed inset-0 z-[100] invisible pointer-events-none transition-all duration-300">
-        <!-- Backdrop -->
-        <div id="drawerBackdrop" onclick="closeQuoteDrawer()" class="absolute inset-0 bg-background/80 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
-
-        <!-- Right Panel Drawer -->
-        <div id="drawerPanel" class="absolute right-0 top-0 h-full w-full max-w-md bg-surface-container-low translate-x-full transition-transform duration-300 ease-out shadow-2xl flex flex-col border-l border-outline-variant/30">
-            <!-- Drawer Header -->
-            <div class="p-6 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container">
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-secondary">request_quote</span>
-                    <h3 class="font-headline font-bold text-lg text-on-surface">Cotización en WhatsApp</h3>
-                </div>
-                <button onclick="closeQuoteDrawer()" class="p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant hover:text-on-surface">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-            </div>
-
-            <!-- Drawer Content Body -->
-            <div class="flex-grow overflow-y-auto p-6 space-y-6">
-                <!-- Selected Product Banner -->
-                <div class="p-4 bg-surface-container rounded-xl border border-outline-variant/30 flex items-center gap-4">
-                    <img id="drawerProductImg" src="assets/bolsas_kraft.png" alt="Producto" class="w-16 h-16 rounded-lg object-cover bg-surface-container-high"/>
-                    <div>
-                        <span id="drawerProductCategory" class="text-secondary font-bold text-[10px] uppercase tracking-widest">Bolsas Kraft</span>
-                        <h4 id="drawerProductTitle" class="font-headline font-bold text-base text-on-surface leading-snug">Bolsa Kraft Boutique</h4>
-                        <span id="drawerMoqBadge" class="inline-block bg-primary-container text-primary text-[10px] font-semibold px-2 py-0.5 rounded mt-1">Pedido mínimo: 100 uds</span>
-                    </div>
-                </div>
-
-                <!-- Size Selection -->
-                <div class="space-y-3">
-                    <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider">1. Seleccionar Tamaño / Medida</label>
-                    <div class="grid grid-cols-3 gap-2" id="drawerSizeButtons">
-                        <!-- Rendered via JS -->
-                    </div>
-                </div>
-
-                <!-- Quantity Selector -->
-                <div class="space-y-3">
-                    <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider">2. Cantidad Requerida</label>
-                    <div class="flex items-center gap-3">
-                        <button type="button" onclick="changeQuantity(-50)" class="w-12 h-12 rounded-xl bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-on-surface text-xl font-bold hover:bg-secondary hover:text-on-secondary transition-all">-</button>
-                        <input id="drawerQuantityInput" type="number" value="100" min="100" step="50" class="w-full text-center bg-surface-container border border-outline-variant/30 rounded-xl py-3 text-on-surface font-bold text-base focus:ring-2 focus:ring-secondary outline-none"/>
-                        <button type="button" onclick="changeQuantity(50)" class="w-12 h-12 rounded-xl bg-surface-container-high border border-outline-variant/40 flex items-center justify-center text-on-surface text-xl font-bold hover:bg-secondary hover:text-on-secondary transition-all">+</button>
-                    </div>
-                </div>
-
-                <!-- Custom Logo Upload & Specifications -->
-                <div class="space-y-3">
-                    <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider">3. Subir Logotipo de tu Marca (PDF, AI, PNG, SVG)</label>
-                    <div id="dropzone" onclick="document.getElementById('logoFileInput').click()" class="border-2 border-dashed border-outline-variant/40 hover:border-secondary rounded-2xl p-4 text-center cursor-pointer transition-all bg-surface-container-high/40 group">
-                        <input type="file" id="logoFileInput" accept=".ai,.pdf,.png,.jpg,.jpeg,.svg,.eps" class="hidden" onchange="handleLogoUpload(this)"/>
-                        
-                        <div id="dropzoneEmptyState" class="space-y-1">
-                            <span class="material-symbols-outlined text-3xl text-on-surface-variant group-hover:text-secondary transition-colors">cloud_upload</span>
-                            <p class="text-xs text-on-surface font-semibold">Haz clic aquí para seleccionar tu logotipo</p>
-                            <p class="text-[10px] text-on-surface-variant">Archivos permitidos: .AI, .PDF, .PNG, .JPG, .SVG</p>
-                        </div>
-
-                        <div id="dropzoneSelectedState" class="hidden flex items-center justify-between bg-surface-container p-3 rounded-xl border border-secondary/50">
-                            <div class="flex items-center gap-2 overflow-hidden">
-                                <span class="material-symbols-outlined text-secondary">file_present</span>
-                                <div class="text-left truncate">
-                                    <p id="uploadedFileName" class="text-xs font-bold text-on-surface truncate">logo.pdf</p>
-                                    <p id="uploadedFileSize" class="text-[10px] text-on-surface-variant">1.2 MB</p>
-                                </div>
-                            </div>
-                            <button type="button" onclick="event.stopPropagation(); removeUploadedLogo();" class="p-1 hover:bg-surface-container-highest rounded-full text-on-surface-variant hover:text-error transition-colors" title="Eliminar archivo">
-                                <span class="material-symbols-outlined text-base">close</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider">4. Especificación Adicional (Opcional)</label>
-                    <textarea id="drawerNoteInput" rows="2" placeholder="Ej: Impresión a 1 tinta negra por ambos lados, logo centrado..." class="w-full bg-surface-container border border-outline-variant/30 rounded-xl p-3 text-xs text-on-surface focus:ring-2 focus:ring-secondary outline-none placeholder:text-on-surface-variant/50"></textarea>
-                </div>
-            </div>
-
-            <!-- Drawer Footer Submit Action -->
-            <div class="p-6 bg-surface-container border-t border-outline-variant/20 space-y-3">
-                <button type="button" onclick="sendWhatsAppQuote()" class="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white py-4 rounded-xl font-bold text-sm flex items-center justify-center gap-3 shadow-lg shadow-green-950/30 hover:scale-[1.01] active:scale-95 transition-all">
-                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
-                    <span>Enviar Cotización a WhatsApp</span>
-                </button>
-                <p class="text-[11px] text-center text-on-surface-variant">Se abrirá la aplicación de WhatsApp con los datos de tu cotización prellenados.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- PRODUCT DETAIL MODAL (DETALLE DE PRODUCTO Y PRECIOS POR VOLUMEN) -->
-    <div id="productModal" class="fixed inset-0 z-[110] invisible pointer-events-none transition-all duration-300">
-        <div id="modalBackdrop" onclick="closeProductModal()" class="absolute inset-0 bg-background/80 backdrop-blur-md opacity-0 transition-opacity duration-300"></div>
-        
-        <div class="fixed inset-0 flex items-center justify-center p-4">
-            <div id="modalPanel" class="relative w-full max-w-2xl bg-surface-container rounded-3xl border border-outline-variant/30 shadow-2xl p-6 md:p-8 scale-95 opacity-0 transition-all duration-300 max-h-[90vh] overflow-y-auto">
-                <button onclick="closeProductModal()" class="absolute top-6 right-6 p-2 hover:bg-surface-container-highest rounded-full transition-colors text-on-surface-variant hover:text-on-surface">
-                    <span class="material-symbols-outlined">close</span>
-                </button>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                    <div>
-                        <img id="modalImg" src="assets/bolsas_kraft.png" alt="Producto" class="w-full aspect-square object-cover rounded-2xl bg-surface-container-high border border-outline-variant/20"/>
-                    </div>
-
-                    <div class="space-y-5">
-                        <div>
-                            <span id="modalCategory" class="text-secondary font-bold text-xs uppercase tracking-widest">Bolsas Kraft</span>
-                            <h2 id="modalTitle" class="font-headline font-bold text-2xl text-on-surface mt-1">Bolsa Kraft Boutique</h2>
-                            <div class="flex items-center gap-2 mt-2" id="modalPriceContainer">
-                                <!-- Price rendered by JS -->
-                            </div>
-                        </div>
-
-                        <p id="modalDesc" class="text-on-surface-variant text-xs leading-relaxed">Descripción del producto...</p>
-
-                        <!-- Specifications List -->
-                        <div class="space-y-2 pt-2 border-t border-outline-variant/20">
-                            <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider">Especificaciones:</h4>
-                            <ul id="modalSpecsList" class="space-y-1 text-xs text-on-surface-variant">
-                                <!-- Specs by JS -->
-                            </ul>
-                        </div>
-
-                        <!-- Volume Pricing Table -->
-                        <div class="space-y-2 pt-2 border-t border-outline-variant/20">
-                            <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider">Precios por Cantidad (Descuento por Volumen):</h4>
-                            <div class="grid grid-cols-3 gap-2 text-center text-xs" id="modalVolumeGrid">
-                                <!-- Volume rates by JS -->
-                            </div>
-                        </div>
-
-                        <div class="pt-4">
-                            <button id="modalQuoteBtn" onclick="" class="w-full bg-secondary text-on-secondary font-bold py-3.5 rounded-xl hover:bg-[#e09e5c] transition-all flex items-center justify-center gap-2 shadow-lg">
-                                <span class="material-symbols-outlined">request_quote</span>
-                                <span>Cotizar Este Producto</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- FLOATING WHATSAPP BUTTON (SIEMPRE VISIBLE EN LA ESQUINA INFERIOR DERECHA) -->
-    <a href="javascript:void(0)" onclick="openDirectWhatsApp()" class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20bd5a] text-white p-4 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-green-950/40 group" title="Atención directa por WhatsApp">
-        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
-        <span class="absolute right-16 bg-surface-container text-on-surface text-xs px-3 py-1.5 rounded-lg border border-outline-variant/40 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">Cotizar en WhatsApp</span>
-    </a>
-
-    <!-- Unified Footer Component -->
-    <footer class="bg-surface-container-lowest border-t border-outline-variant/20 mt-auto">
-        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop py-12 lg:py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Brand Column -->
+    <!-- GLOBAL FOOTER -->
+    <footer class="bg-surface-container-lowest border-t border-outline-variant/20 pt-16 pb-8">
+        <div class="max-w-container-max mx-auto px-6 md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-10 pb-12">
             <div class="space-y-4">
-                <div class="font-headline font-extrabold text-xl text-on-surface flex items-center gap-2">
-                    <span class="material-symbols-outlined text-secondary">local_mall</span>
-                    <span>etiqybolsasimpresas</span>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-secondary flex items-center justify-center text-on-secondary font-bold">
+                        <span class="material-symbols-outlined text-xl">local_mall</span>
+                    </div>
+                    <span class="font-headline font-extrabold text-lg text-on-surface">etiqy<span class="text-secondary">.</span></span>
                 </div>
-                <p class="text-on-surface-variant text-xs leading-relaxed">
-                    Empaques y Etiquetas Impresas Personalizadas. Calidad industrial y acabados de alta gama para posicionar tu marca.
+                <p class="text-on-surface-variant text-xs leading-relaxed max-w-xs">
+                    Fabricantes de bolsas kraft impresas, bolsas plásticas boutique, etiquetas adhesivas en rollo y empaques personalizados para marcas.
                 </p>
-                <div class="flex items-center gap-3 pt-2">
-                    <a href="https://www.instagram.com/etiqybolsasimpresas" target="_blank" class="w-9 h-9 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-on-surface hover:text-secondary hover:border-secondary transition-all">
-                        <span class="material-symbols-outlined text-lg">camera</span>
-                    </a>
-                    <button onclick="openDirectWhatsApp()" class="w-9 h-9 rounded-xl bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-on-surface hover:text-[#25D366] hover:border-[#25D366] transition-all">
-                        <span class="material-symbols-outlined text-lg">chat</span>
-                    </button>
-                </div>
             </div>
 
-            <!-- Products Column -->
             <div class="space-y-3">
                 <h5 class="font-headline font-bold text-sm text-secondary uppercase tracking-wider">Productos</h5>
                 <ul class="space-y-2 text-xs text-on-surface-variant">
-                    <li><a href="#catalogo" onclick="filterCatalogAndNavigate('Bolsas Kraft')" class="hover:text-on-surface transition-colors">Bolsas Kraft Impresas</a></li>
-                    <li><a href="#catalogo" onclick="filterCatalogAndNavigate('Bolsas Plásticas')" class="hover:text-on-surface transition-colors">Bolsas Plásticas Boutique</a></li>
-                    <li><a href="#catalogo" onclick="filterCatalogAndNavigate('Etiquetas')" class="hover:text-on-surface transition-colors">Etiquetas Adhesivas en Rollo</a></li>
-                    <li><a href="#catalogo" onclick="filterCatalogAndNavigate('Cajas')" class="hover:text-on-surface transition-colors">Cajas y Cintas de Envíos</a></li>
+                    <li><a href="catalogo.html?categoria=Bolsas%20Kraft" class="hover:text-on-surface transition-colors">Bolsas Kraft Impresas</a></li>
+                    <li><a href="catalogo.html?categoria=Bolsas%20Pl%C3%A1sticas" class="hover:text-on-surface transition-colors">Bolsas Plásticas Boutique</a></li>
+                    <li><a href="catalogo.html?categoria=Etiquetas" class="hover:text-on-surface transition-colors">Etiquetas Adhesivas en Rollo</a></li>
+                    <li><a href="catalogo.html?categoria=Cajas" class="hover:text-on-surface transition-colors">Cajas y Cintas de Envíos</a></li>
                 </ul>
             </div>
 
-            <!-- Navigation Column -->
             <div class="space-y-3">
                 <h5 class="font-headline font-bold text-sm text-secondary uppercase tracking-wider">Navegación</h5>
                 <ul class="space-y-2 text-xs text-on-surface-variant">
-                    <li><a href="#inicio" onclick="navigateTo('inicio')" class="hover:text-on-surface transition-colors">Inicio</a></li>
-                    <li><a href="#catalogo" onclick="navigateTo('catalogo')" class="hover:text-on-surface transition-colors">Catálogo Completo</a></li>
-                    <li><a href="#nosotros" onclick="navigateTo('nosotros')" class="hover:text-on-surface transition-colors">Por Qué Elegirnos</a></li>
-                    <li><a href="#galeria" onclick="navigateTo('galeria')" class="hover:text-on-surface transition-colors">Galería de Trabajos</a></li>
+                    <li><a href="index.html" class="hover:text-on-surface transition-colors">Inicio</a></li>
+                    <li><a href="catalogo.html" class="hover:text-on-surface transition-colors">Catálogo Completo</a></li>
+                    <li><a href="nosotros.html" class="hover:text-on-surface transition-colors">Por Qué Elegirnos</a></li>
+                    <li><a href="galeria.html" class="hover:text-on-surface transition-colors">Galería de Trabajos</a></li>
                 </ul>
             </div>
 
-            <!-- Contact Column -->
             <div class="space-y-3">
                 <h5 class="font-headline font-bold text-sm text-secondary uppercase tracking-wider">Atención al Cliente</h5>
                 <ul class="space-y-2.5 text-xs text-on-surface-variant">
@@ -693,6 +356,7 @@
         </div>
     </footer>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
+

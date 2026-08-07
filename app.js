@@ -1,5 +1,4 @@
-
-// Logo Upload State
+﻿// Logo Upload State
 let uploadedLogoFile = null;
 
 function handleLogoUpload(input) {
@@ -7,23 +6,187 @@ function handleLogoUpload(input) {
         const file = input.files[0];
         uploadedLogoFile = file;
         
-        document.getElementById('uploadedFileName').textContent = file.name;
-        document.getElementById('uploadedFileSize').textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
+        const nameEl = document.getElementById('uploadedFileName');
+        const sizeEl = document.getElementById('uploadedFileSize');
+        if (nameEl) nameEl.textContent = file.name;
+        if (sizeEl) sizeEl.textContent = (file.size / (1024 * 1024)).toFixed(2) + ' MB';
         
-        document.getElementById('dropzoneEmptyState').classList.add('hidden');
-        document.getElementById('dropzoneSelectedState').classList.remove('hidden');
+        const emptyState = document.getElementById('dropzoneEmptyState');
+        const selectedState = document.getElementById('dropzoneSelectedState');
+        if (emptyState) emptyState.classList.add('hidden');
+        if (selectedState) selectedState.classList.remove('hidden');
     }
 }
 
 function removeUploadedLogo() {
     uploadedLogoFile = null;
-    document.getElementById('logoFileInput').value = '';
-    document.getElementById('dropzoneEmptyState').classList.remove('hidden');
-    document.getElementById('dropzoneSelectedState').classList.add('hidden');
+    const input = document.getElementById('logoFileInput');
+    if (input) input.value = '';
+    const emptyState = document.getElementById('dropzoneEmptyState');
+    const selectedState = document.getElementById('dropzoneSelectedState');
+    if (emptyState) emptyState.classList.remove('hidden');
+    if (selectedState) selectedState.classList.add('hidden');
 }
 
 // Active Application State
-let products = [];
+let products = [
+  {
+    "id": 1,
+    "name": "Bolsa Kraft Boutique Impresa",
+    "slug": "bolsa-kraft-boutique",
+    "category": "Bolsas Kraft",
+    "price": 1200,
+    "salePrice": 950,
+    "isOffer": true,
+    "moq": "Desde 100 uds",
+    "img": "assets/bolsas_kraft.png",
+    "sizes": ["P (15x20 cm)", "M (22x30 cm)", "G (30x40 cm)"],
+    "volumePricing": { "100": 1200, "500": 950, "1000": 800 },
+    "description": "Bolsa de papel kraft ecológico de alta densidad (120g) con asas retorcidas e impresión de tu logotipo en 1 o 2 tintas. Perfecta para tiendas de ropa, calzado y boutiques.",
+    "specs": {
+      "Material": "Papel Kraft Reciclable 120g",
+      "Impresión": "Serigrafía / Flexografía de Alta Nitidez",
+      "Acabado": "Mate Natural",
+      "Asa": "Cordón de Papel Retorcido Reforzado"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Etiquetas en Rollo Metalizadas Foil",
+    "slug": "etiquetas-rollo-foil",
+    "category": "Etiquetas",
+    "price": 450,
+    "salePrice": 350,
+    "isOffer": true,
+    "moq": "Desde 100 uds",
+    "img": "assets/etiquetas_rollo.png",
+    "sizes": ["3x3 cm", "5x5 cm", "7x7 cm"],
+    "volumePricing": { "100": 450, "500": 350, "1000": 280 },
+    "description": "Etiquetas adhesivas en rollo con estampado en pan de oro/plata brillante. Alta adherencia para envases de cristal, botellas, cosméticos y empaques de lujo.",
+    "specs": {
+      "Material": "Vinilo Adhesivo Premium",
+      "Impresión": "Foil Metalizado Dorado / Plateado",
+      "Acabado": "Brillante o Mate",
+      "Presentación": "Rollo continuo de fácil aplicación"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Bolsa Plástica Polietileno Boutique",
+    "slug": "bolsa-plastica-polietileno",
+    "category": "Bolsas Plásticas",
+    "price": 850,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 500 uds",
+    "img": "assets/bolsas_plasticas.png",
+    "sizes": ["P (20x30 cm)", "M (30x40 cm)", "G (40x50 cm)"],
+    "volumePricing": { "500": 850, "1000": 680, "3000": 550 },
+    "description": "Bolsas de plástico troqueladas tipo riñón, elaboradas en polietileno de alta densidad duradero con acabado satinado suave.",
+    "specs": {
+      "Material": "Polietileno de Alta Densidad",
+      "Impresión": "Pigmento a 1 o 2 caras",
+      "Troquel": "Asa tipo Riñón Reforzada",
+      "Resistencia": "Soporta hasta 8 kg"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Caja Corrugada para Envíos E-Commerce",
+    "slug": "caja-corrugada-ecommerce",
+    "category": "Cajas",
+    "price": 2400,
+    "salePrice": 1990,
+    "isOffer": true,
+    "moq": "Desde 100 uds",
+    "img": "assets/cajas_impresas.png",
+    "sizes": ["P (15x15x8 cm)", "M (25x20x10 cm)", "G (35x25x12 cm)"],
+    "volumePricing": { "100": 2400, "500": 1990, "1000": 1650 },
+    "description": "Cajas de cartón microcorrugado impresas a medida para despachos de e-commerce. Protegen tus productos durante el transporte proyectando una imagen profesional.",
+    "specs": {
+      "Material": "Cartón Microcorrugado Flauta E",
+      "Impresión": "Flexografía exterior e interior",
+      "Cierre": "Auto-armable sin cinta adhesiva requerida"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Bolsa Kraft de Asa Plana Económica",
+    "slug": "bolsa-kraft-asa-plana",
+    "category": "Bolsas Kraft",
+    "price": 980,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 100 uds",
+    "img": "assets/bolsas_kraft.png",
+    "sizes": ["P (18x24 cm)", "M (26x34 cm)", "G (32x42 cm)"],
+    "volumePricing": { "100": 980, "500": 780, "1000": 620 },
+    "description": "Opción económica y funcional para domicilios, panaderías, restaurantes y comercios que requieren rapidez y excelente presentación.",
+    "specs": {
+      "Material": "Papel Kraft Natural 90g",
+      "Asa": "Papel Plano Pegado Interior",
+      "Impresión": "Tintas Ecológicas a base de agua"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Etiqueta Transparente Vinilo Mate Impermeable",
+    "slug": "etiqueta-transparente-vinilo",
+    "category": "Etiquetas",
+    "price": 380,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 200 uds",
+    "img": "assets/etiquetas_rollo.png",
+    "sizes": ["4x4 cm", "6x6 cm", "8x8 cm"],
+    "volumePricing": { "200": 380, "500": 290, "1000": 220 },
+    "description": "Etiquetas totalmente transparentes ideales para frascos de vidrio, cosmética y productos refrigerados. Resistentes al agua y aceite.",
+    "specs": {
+      "Material": "BOPP Transparente ultra claro",
+      "Impresión": "Tinta Blanca + CMYK",
+      "Resistencia": "Resistente a agua, alcohol y congelación"
+    }
+  },
+  {
+    "id": 7,
+    "name": "Bolsa Satinada de Lujo para Ropa y Calzado",
+    "slug": "bolsa-satinada-lujo",
+    "category": "Bolsas Plásticas",
+    "price": 1450,
+    "salePrice": 1250,
+    "isOffer": true,
+    "moq": "Desde 300 uds",
+    "img": "assets/bolsas_plasticas.png",
+    "sizes": ["M (30x40 cm)", "G (40x50 cm)"],
+    "volumePricing": { "300": 1450, "500": 1250, "1000": 990 },
+    "description": "Bolsas de plástico grueso con acabado mate táctil satinado y asas de cordón suave de tela. Eleva la experiencia de compra de tus clientes.",
+    "specs": {
+      "Material": "Polietileno de Baja Densidad 70 micras",
+      "Asas": "Cordón de algodón/Poliéster",
+      "Acabado": "Tacto Suave Satinado"
+    }
+  },
+  {
+    "id": 8,
+    "name": "Cinta de Embalaje Impresa con Logotipo",
+    "slug": "cinta-embalaje-logo",
+    "category": "Cajas",
+    "price": 8500,
+    "salePrice": null,
+    "isOffer": false,
+    "moq": "Desde 36 rollos",
+    "img": "assets/cajas_impresas.png",
+    "sizes": ["48 mm x 100 m"],
+    "volumePricing": { "36": 8500, "72": 7200, "144": 5900 },
+    "description": "Cinta adhesiva de polipropileno impresa a 1 o 2 tintas. Sella tus cajas garantizando la inviolabilidad del paquete y reforzando tu marca.",
+    "specs": {
+      "Material": "Polipropileno Grado Industrial 45 micras",
+      "Adhesivo": "Acrílico de Alta Adherencia",
+      "Medida": "48 mm de ancho x 100 m de largo"
+    }
+  }
+];
+
 let currentCategory = 'Todas';
 let currentSearch = '';
 let showOffersOnly = false;
@@ -31,62 +194,31 @@ let sortBy = 'default';
 let activeProductForQuote = null;
 let selectedSize = '';
 
-// WhatsApp Business Contact (Editable)
+// WhatsApp Business Contact
 const WHATSAPP_PHONE = "573506765219";
 
-// Fetch Products from JSON Data File
+// Load products async or use fallback
 async function loadProducts() {
     try {
         const response = await fetch('data/products.json');
         if (!response.ok) throw new Error('Network response failed');
-        products = await response.json();
-        renderProducts();
-    } catch (err) {
-        console.error('Failed loading products.json, fallback array used:', err);
-    }
-}
-
-// Navigation Engine
-function navigateTo(view) {
-    const homeView = document.getElementById('view-home');
-    const catalogView = document.getElementById('view-catalogo');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    navLinks.forEach(link => link.classList.remove('active-link'));
-
-    if (view === 'catalogo') {
-        homeView.classList.add('hidden');
-        catalogView.classList.remove('hidden');
-        document.getElementById('nav-catalogo').classList.add('active-link');
-        window.location.hash = 'catalogo';
-    } else {
-        catalogView.classList.add('hidden');
-        homeView.classList.remove('hidden');
-        
-        if (view === 'nosotros') {
-            document.getElementById('nav-nosotros').classList.add('active-link');
-            window.location.hash = 'nosotros';
-            const targetEl = document.getElementById('nosotros');
-            if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
-            return;
-        } else if (view === 'galeria') {
-            document.getElementById('nav-galeria').classList.add('active-link');
-            window.location.hash = 'galeria';
-            const targetEl = document.getElementById('galeria');
-            if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
-            return;
-        } else {
-            document.getElementById('nav-inicio').classList.add('active-link');
-            window.location.hash = 'inicio';
+        const loaded = await response.json();
+        if (loaded && loaded.length > 0) {
+            products = loaded;
         }
+    } catch (err) {
+        console.warn('Utilizando catálogo local de respaldo:', err);
+    } finally {
+        renderProducts();
     }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function filterCatalogAndNavigate(category) {
-    setCategoryFilter(category);
-    navigateTo('catalogo');
+    if (window.location.pathname.includes('catalogo.html')) {
+        setCategoryFilter(category);
+    } else {
+        window.location.href = `catalogo.html?categoria=${encodeURIComponent(category)}`;
+    }
 }
 
 function setCategoryFilter(category) {
@@ -109,6 +241,7 @@ function setCategoryFilter(category) {
 
 function handleSearch() {
     const input = document.getElementById('searchInput');
+    if (!input) return;
     currentSearch = input.value.trim().toLowerCase();
     renderProducts();
 }
@@ -116,10 +249,12 @@ function handleSearch() {
 function toggleOffersOnly() {
     showOffersOnly = !showOffersOnly;
     const btn = document.getElementById('offersToggleBtn');
-    if (showOffersOnly) {
-        btn.classList.add('active-offer-btn');
-    } else {
-        btn.classList.remove('active-offer-btn');
+    if (btn) {
+        if (showOffersOnly) {
+            btn.classList.add('active-offer-btn');
+        } else {
+            btn.classList.remove('active-offer-btn');
+        }
     }
     renderProducts();
 }
@@ -135,14 +270,18 @@ function resetFilters() {
     showOffersOnly = false;
     sortBy = 'default';
     
-    document.getElementById('searchInput').value = '';
-    document.getElementById('sortSelect').value = 'default';
-    document.getElementById('offersToggleBtn').classList.remove('active-offer-btn');
+    const input = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
+    const offersBtn = document.getElementById('offersToggleBtn');
+    
+    if (input) input.value = '';
+    if (sortSelect) sortSelect.value = 'default';
+    if (offersBtn) offersBtn.classList.remove('active-offer-btn');
     
     setCategoryFilter('Todas');
 }
 
-// Product Grid Renderer with Filtering & Sorting
+// Product Grid Renderer
 function renderProducts() {
     const grid = document.getElementById('productGrid');
     const noResults = document.getElementById('noResultsState');
@@ -158,7 +297,6 @@ function renderProducts() {
         return matchesCategory && matchesSearch && matchesOffers;
     });
 
-    // Apply Sorting
     if (sortBy === 'price-asc') {
         filtered.sort((a, b) => (a.salePrice || a.price) - (b.salePrice || b.price));
     } else if (sortBy === 'price-desc') {
@@ -169,10 +307,10 @@ function renderProducts() {
 
     if (filtered.length === 0) {
         grid.innerHTML = '';
-        noResults.classList.remove('hidden');
+        if (noResults) noResults.classList.remove('hidden');
         return;
     } else {
-        noResults.classList.add('hidden');
+        if (noResults) noResults.classList.add('hidden');
     }
 
     grid.innerHTML = filtered.map(item => {
@@ -203,14 +341,12 @@ function renderProducts() {
 
                 <h3 onclick="openProductDetail(${item.id})" class="font-headline font-bold text-base text-on-surface line-clamp-2 leading-snug cursor-pointer hover:text-secondary transition-colors">${item.name}</h3>
                 
-                <!-- Price Display -->
                 <div class="flex items-baseline gap-2">
                     <span class="font-headline font-extrabold text-lg text-on-surface">$${displayPrice.toLocaleString()}</span>
                     ${hasOffer ? `<span class="text-xs text-on-surface-variant/60 line-through">$${item.price.toLocaleString()}</span>` : ''}
                     <span class="text-[10px] text-on-surface-variant/80 font-normal">/unidad</span>
                 </div>
 
-                <!-- Size Badges -->
                 <div class="flex items-center gap-1.5 pt-1">
                     ${item.sizes.map(s => `<span class="px-2 py-0.5 rounded border border-outline-variant/40 text-[10px] text-on-surface font-semibold">${s}</span>`).join('')}
                 </div>
@@ -230,59 +366,71 @@ function renderProducts() {
     }).join('');
 }
 
-// Product Detail Modal Logic
+// Modal Detail Logic
 function openProductDetail(productId) {
     const item = products.find(p => p.id === productId);
     if (!item) return;
 
-    document.getElementById('modalImg').src = item.img;
-    document.getElementById('modalTitle').textContent = item.name;
-    document.getElementById('modalCategory').textContent = item.category;
-    document.getElementById('modalDesc').textContent = item.description;
+    const imgEl = document.getElementById('modalImg');
+    const titleEl = document.getElementById('modalTitle');
+    const catEl = document.getElementById('modalCategory');
+    const descEl = document.getElementById('modalDesc');
+    const priceEl = document.getElementById('modalPriceContainer');
+    const specsEl = document.getElementById('modalSpecsList');
+    const volGrid = document.getElementById('modalVolumeGrid');
+    const quoteBtn = document.getElementById('modalQuoteBtn');
 
-    // Price container
+    if (imgEl) imgEl.src = item.img;
+    if (titleEl) titleEl.textContent = item.name;
+    if (catEl) catEl.textContent = item.category;
+    if (descEl) descEl.textContent = item.description;
+
     const hasOffer = item.salePrice && item.salePrice < item.price;
     const displayPrice = hasOffer ? item.salePrice : item.price;
-    document.getElementById('modalPriceContainer').innerHTML = `
-        <span class="font-headline font-extrabold text-2xl text-on-surface">$${displayPrice.toLocaleString()}</span>
-        ${hasOffer ? `<span class="text-sm text-on-surface-variant/60 line-through">$${item.price.toLocaleString()}</span>` : ''}
-        <span class="text-xs text-on-surface-variant">/unidad base</span>
-    `;
+    if (priceEl) {
+        priceEl.innerHTML = `
+            <span class="font-headline font-extrabold text-2xl text-on-surface">$${displayPrice.toLocaleString()}</span>
+            ${hasOffer ? `<span class="text-sm text-on-surface-variant/60 line-through">$${item.price.toLocaleString()}</span>` : ''}
+            <span class="text-xs text-on-surface-variant">/unidad base</span>
+        `;
+    }
 
-    // Specs List
-    const specsEl = document.getElementById('modalSpecsList');
-    specsEl.innerHTML = Object.entries(item.specs || {}).map(([key, val]) => `
-        <li class="flex items-center justify-between py-1 border-b border-outline-variant/10">
-            <span class="font-semibold text-on-surface">${key}:</span>
-            <span class="text-on-surface-variant">${val}</span>
-        </li>
-    `).join('');
+    if (specsEl) {
+        specsEl.innerHTML = Object.entries(item.specs || {}).map(([key, val]) => `
+            <li class="flex items-center justify-between py-1 border-b border-outline-variant/10">
+                <span class="font-semibold text-on-surface">${key}:</span>
+                <span class="text-on-surface-variant">${val}</span>
+            </li>
+        `).join('');
+    }
 
-    // Volume Grid Rates
-    const volGrid = document.getElementById('modalVolumeGrid');
-    volGrid.innerHTML = Object.entries(item.volumePricing || {}).map(([qty, rate]) => `
-        <div class="p-3 bg-surface-container-high rounded-xl border border-outline-variant/30">
-            <p class="font-bold text-secondary text-sm">${qty}+ uds</p>
-            <p class="text-on-surface font-extrabold text-xs">$${rate.toLocaleString()}/ud</p>
-        </div>
-    `).join('');
+    if (volGrid) {
+        volGrid.innerHTML = Object.entries(item.volumePricing || {}).map(([qty, rate]) => `
+            <div class="p-3 bg-surface-container-high rounded-xl border border-outline-variant/30">
+                <p class="font-bold text-secondary text-sm">${qty}+ uds</p>
+                <p class="text-on-surface font-extrabold text-xs">$${rate.toLocaleString()}/ud</p>
+            </div>
+        `).join('');
+    }
 
-    // Quote CTA
-    const quoteBtn = document.getElementById('modalQuoteBtn');
-    quoteBtn.onclick = () => {
-        closeProductModal();
-        openQuoteDrawer(item.id);
-    };
+    if (quoteBtn) {
+        quoteBtn.onclick = () => {
+            closeProductModal();
+            openQuoteDrawer(item.id);
+        };
+    }
 
     const modal = document.getElementById('productModal');
     const backdrop = document.getElementById('modalBackdrop');
     const panel = document.getElementById('modalPanel');
 
-    modal.classList.remove('invisible', 'pointer-events-none');
-    setTimeout(() => {
-        backdrop.classList.remove('opacity-0');
-        panel.classList.remove('scale-95', 'opacity-0');
-    }, 10);
+    if (modal && backdrop && panel) {
+        modal.classList.remove('invisible', 'pointer-events-none');
+        setTimeout(() => {
+            backdrop.classList.remove('opacity-0');
+            panel.classList.remove('scale-95', 'opacity-0');
+        }, 10);
+    }
 }
 
 function closeProductModal() {
@@ -290,12 +438,14 @@ function closeProductModal() {
     const backdrop = document.getElementById('modalBackdrop');
     const panel = document.getElementById('modalPanel');
 
-    backdrop.classList.add('opacity-0');
-    panel.classList.add('scale-95', 'opacity-0');
+    if (modal && backdrop && panel) {
+        backdrop.classList.add('opacity-0');
+        panel.classList.add('scale-95', 'opacity-0');
 
-    setTimeout(() => {
-        modal.classList.add('invisible', 'pointer-events-none');
-    }, 300);
+        setTimeout(() => {
+            modal.classList.add('invisible', 'pointer-events-none');
+        }, 300);
+    }
 }
 
 // Drawer Logic
@@ -303,31 +453,41 @@ function openQuoteDrawer(productId) {
     const product = products.find(p => p.id === productId) || products[0];
     activeProductForQuote = product;
 
-    document.getElementById('drawerProductTitle').textContent = product.name;
-    document.getElementById('drawerProductCategory').textContent = product.category;
-    document.getElementById('drawerProductImg').src = product.img;
-    document.getElementById('drawerMoqBadge').textContent = `Pedido mínimo: ${product.moq}`;
-    document.getElementById('drawerQuantityInput').value = 100;
-    document.getElementById('drawerNoteInput').value = '';
+    const titleEl = document.getElementById('drawerProductTitle');
+    const catEl = document.getElementById('drawerProductCategory');
+    const imgEl = document.getElementById('drawerProductImg');
+    const moqEl = document.getElementById('drawerMoqBadge');
+    const qtyInput = document.getElementById('drawerQuantityInput');
+    const noteInput = document.getElementById('drawerNoteInput');
+
+    if (titleEl) titleEl.textContent = product.name;
+    if (catEl) catEl.textContent = product.category;
+    if (imgEl) imgEl.src = product.img;
+    if (moqEl) moqEl.textContent = `Pedido mínimo: ${product.moq}`;
+    if (qtyInput) qtyInput.value = 100;
+    if (noteInput) noteInput.value = '';
     
-    // Render Size options
     const sizeContainer = document.getElementById('drawerSizeButtons');
     selectedSize = product.sizes[0] || 'Estándar';
-    sizeContainer.innerHTML = product.sizes.map((s, idx) => `
-        <button type="button" onclick="selectSize('${s}', this)" class="size-btn ${idx === 0 ? 'active-size border-2 border-secondary bg-secondary/10 text-secondary font-bold' : 'border border-outline-variant/30 text-on-surface-variant'} p-3 rounded-xl text-xs flex flex-col items-center gap-1 font-semibold transition-all">
-            <span>${s}</span>
-        </button>
-    `).join('');
+    if (sizeContainer) {
+        sizeContainer.innerHTML = product.sizes.map((s, idx) => `
+            <button type="button" onclick="selectSize('${s}', this)" class="size-btn ${idx === 0 ? 'active-size border-2 border-secondary bg-secondary/10 text-secondary font-bold' : 'border border-outline-variant/30 text-on-surface-variant'} p-3 rounded-xl text-xs flex flex-col items-center gap-1 font-semibold transition-all">
+                <span>${s}</span>
+            </button>
+        `).join('');
+    }
 
     const drawer = document.getElementById('quoteDrawer');
     const backdrop = document.getElementById('drawerBackdrop');
     const panel = document.getElementById('drawerPanel');
 
-    drawer.classList.remove('invisible', 'pointer-events-none');
-    setTimeout(() => {
-        backdrop.classList.remove('opacity-0');
-        panel.classList.remove('translate-x-full');
-    }, 10);
+    if (drawer && backdrop && panel) {
+        drawer.classList.remove('invisible', 'pointer-events-none');
+        setTimeout(() => {
+            backdrop.classList.remove('opacity-0');
+            panel.classList.remove('translate-x-full');
+        }, 10);
+    }
 }
 
 function closeQuoteDrawer() {
@@ -335,12 +495,14 @@ function closeQuoteDrawer() {
     const backdrop = document.getElementById('drawerBackdrop');
     const panel = document.getElementById('drawerPanel');
 
-    backdrop.classList.add('opacity-0');
-    panel.classList.add('translate-x-full');
+    if (drawer && backdrop && panel) {
+        backdrop.classList.add('opacity-0');
+        panel.classList.add('translate-x-full');
 
-    setTimeout(() => {
-        drawer.classList.add('invisible', 'pointer-events-none');
-    }, 300);
+        setTimeout(() => {
+            drawer.classList.add('invisible', 'pointer-events-none');
+        }, 300);
+    }
 }
 
 function selectSize(size, element) {
@@ -350,12 +512,15 @@ function selectSize(size, element) {
         btn.classList.remove('border-2', 'border-secondary', 'bg-secondary/10', 'text-secondary', 'font-bold');
         btn.classList.add('border', 'border-outline-variant/30', 'text-on-surface-variant');
     });
-    element.classList.remove('border', 'border-outline-variant/30', 'text-on-surface-variant');
-    element.classList.add('border-2', 'border-secondary', 'bg-secondary/10', 'text-secondary', 'font-bold');
+    if (element) {
+        element.classList.remove('border', 'border-outline-variant/30', 'text-on-surface-variant');
+        element.classList.add('border-2', 'border-secondary', 'bg-secondary/10', 'text-secondary', 'font-bold');
+    }
 }
 
 function changeQuantity(delta) {
     const input = document.getElementById('drawerQuantityInput');
+    if (!input) return;
     let val = parseInt(input.value) || 100;
     val = Math.max(100, val + delta);
     input.value = val;
@@ -364,30 +529,24 @@ function changeQuantity(delta) {
 function sendWhatsAppQuote() {
     if (!activeProductForQuote) return;
 
-    const quantity = document.getElementById('drawerQuantityInput').value || 100;
-    const note = document.getElementById('drawerNoteInput').value.trim();
+    const qtyInput = document.getElementById('drawerQuantityInput');
+    const noteInput = document.getElementById('drawerNoteInput');
 
-    let message = `Hola *etiqybolsasimpresas*! 👋
+    const quantity = qtyInput ? qtyInput.value : 100;
+    const note = noteInput ? noteInput.value.trim() : '';
 
-`;
-    message += `Me gustaría cotizar el siguiente empaque:
-`;
-    message += `📦 *Producto:* ${activeProductForQuote.name}
-`;
-    message += `🏷️ *Categoría:* ${activeProductForQuote.category}
-`;
-    message += `📐 *Medida/Formato:* ${selectedSize}
-`;
-    message += `🔢 *Cantidad Requerida:* ${quantity} unidades
-`;
+    let message = `Hola *etiqybolsasimpresas*! 👋\n\n`;
+    message += `Me gustaría cotizar el siguiente empaque:\n`;
+    message += `📦 *Producto:* ${activeProductForQuote.name}\n`;
+    message += `🏷️ *Categoría:* ${activeProductForQuote.category}\n`;
+    message += `📐 *Medida/Formato:* ${selectedSize}\n`;
+    message += `🔢 *Cantidad Requerida:* ${quantity} unidades\n`;
 
     if (note) {
-        message += `📝 *Detalles/Logotipo:* ${note}
-`;
+        message += `📝 *Detalles/Logotipo:* ${note}\n`;
     }
 
-    message += `
-Quedo atento a la cotización formal y tiempos de entrega. ¡Muchas gracias!`;
+    message += `\nQuedo atento a la cotización formal y tiempos de entrega. ¡Muchas gracias!`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMessage}`;
@@ -402,29 +561,33 @@ function openDirectWhatsApp(customMsg) {
 }
 
 function downloadPDFCatalog() {
-    navigateTo('catalogo');
-    setTimeout(() => {
-        window.print();
-    }, 300);
+    window.print();
 }
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('hidden');
+    if (menu) menu.classList.toggle('hidden');
 }
 
-// Initial Loading Logic
+// Initialization on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-    loadProducts();
-
-    const hash = window.location.hash.replace('#', '');
-    if (hash === 'catalogo') {
-        navigateTo('catalogo');
-    } else if (hash === 'nosotros') {
-        navigateTo('nosotros');
-    } else if (hash === 'galeria') {
-        navigateTo('galeria');
-    } else {
-        navigateTo('inicio');
+    // If productGrid exists on the page (e.g. catalogo.html)
+    if (document.getElementById('productGrid')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const catParam = urlParams.get('categoria');
+        if (catParam) {
+            currentCategory = catParam;
+            const pills = document.querySelectorAll('.filter-pill');
+            pills.forEach(pill => {
+                if (pill.getAttribute('data-category') === catParam) {
+                    pill.classList.add('active-pill', 'bg-secondary', 'text-on-secondary');
+                    pill.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                } else {
+                    pill.classList.remove('active-pill', 'bg-secondary', 'text-on-secondary');
+                    pill.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                }
+            });
+        }
+        loadProducts();
     }
 });
