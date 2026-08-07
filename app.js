@@ -197,6 +197,19 @@ let selectedSize = '';
 // WhatsApp Business Contact
 const WHATSAPP_PHONE = "573506765219";
 
+// Navigation helper
+function navigateTo(view) {
+    if (view === 'catalogo') {
+        window.location.href = 'catalogo.html';
+    } else if (view === 'nosotros') {
+        window.location.href = 'nosotros.html';
+    } else if (view === 'galeria') {
+        window.location.href = 'galeria.html';
+    } else {
+        window.location.href = 'index.html';
+    }
+}
+
 // Load products async or use fallback
 async function loadProducts() {
     try {
@@ -569,9 +582,29 @@ function toggleMobileMenu() {
     if (menu) menu.classList.toggle('hidden');
 }
 
+// Attach all interactive functions to window for global HTML onclick availability
+window.handleLogoUpload = handleLogoUpload;
+window.removeUploadedLogo = removeUploadedLogo;
+window.navigateTo = navigateTo;
+window.filterCatalogAndNavigate = filterCatalogAndNavigate;
+window.setCategoryFilter = setCategoryFilter;
+window.handleSearch = handleSearch;
+window.toggleOffersOnly = toggleOffersOnly;
+window.handleSortChange = handleSortChange;
+window.resetFilters = resetFilters;
+window.openProductDetail = openProductDetail;
+window.closeProductModal = closeProductModal;
+window.openQuoteDrawer = openQuoteDrawer;
+window.closeQuoteDrawer = closeQuoteDrawer;
+window.selectSize = selectSize;
+window.changeQuantity = changeQuantity;
+window.sendWhatsAppQuote = sendWhatsAppQuote;
+window.openDirectWhatsApp = openDirectWhatsApp;
+window.downloadPDFCatalog = downloadPDFCatalog;
+window.toggleMobileMenu = toggleMobileMenu;
+
 // Initialization on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-    // If productGrid exists on the page (e.g. catalogo.html)
     if (document.getElementById('productGrid')) {
         const urlParams = new URLSearchParams(window.location.search);
         const catParam = urlParams.get('categoria');
