@@ -610,8 +610,8 @@ window.sendWhatsAppQuote = sendWhatsAppQuote;
 window.openDirectWhatsApp = openDirectWhatsApp;
 window.toggleMobileMenu = toggleMobileMenu;
 
-// DOM Ready
-document.addEventListener('DOMContentLoaded', () => {
+// Bulletproof catalog initialization
+function initCatalogApp() {
     if (document.getElementById('productGrid')) {
         const urlParams = new URLSearchParams(window.location.search);
         const catParam = urlParams.get('categoria');
@@ -630,4 +630,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         loadProducts();
     }
-});
+}
+
+// Run immediately for fallback products
+if (document.getElementById('productGrid')) {
+    renderProducts();
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCatalogApp);
+} else {
+    initCatalogApp();
+}
